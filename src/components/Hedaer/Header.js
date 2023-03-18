@@ -17,7 +17,7 @@ export function Header({}) {
         </div>
 
         <div className="header__info-container">
-          <button>
+          <button className="header__add-clothes">
             + Add clothes
           </button>
 
