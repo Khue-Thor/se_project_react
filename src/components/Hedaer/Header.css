@@ -1,0 +1,74 @@
+.header {
+  max-width: 1360px;
+  padding: 32px 40px 0px 40px;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.header__logo-container {
+  display: flex;
+  gap: 24px;
+  max-width: fit-content;
+  align-items: center;
+}
+
+.header__logo {
+  width: 89px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.header__date-location {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.header__info-container {
+  display: flex;
+  align-items: center;
+}
+
+.header__username {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  padding: 0 12px 0 20px;
+}
+
+
+.header__add-clothes {
+  height: 24px;
+  width: 145px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  border: none;
+  background: transparent;
+}
+
+.header__add-clothes:hover {
+  cursor: pointer;
+}
+
+.header__avatar {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  background-position: center;
+  margin-left: 12px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
