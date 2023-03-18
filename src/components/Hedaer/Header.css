@@ -1,6 +1,7 @@
 .header {
-  max-width: 1440px;
+  max-width: 1360px;
   padding: 32px 40px 0px 40px;
+  background-color: red;
 }
 
 .header__container {
@@ -13,6 +14,21 @@
   display: flex;
   gap: 24px;
   max-width: fit-content;
+}
+
+.header__logo {
+  width: 89px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.header__date-location {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .header__info-container {
