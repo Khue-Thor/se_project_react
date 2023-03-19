@@ -13,8 +13,8 @@ export function WeatherCard({ weatherData }) {
       </div>
 
       <div className="weather__images-container">
-        <img className="weather__cloud-union" src={cloudPath} alt="clouds" />
         <img className="weather__sunny" src={sunPath} alt="sun" />
+        <img className="weather__cloud-union" src={cloudPath} alt="clouds" />
       </div>
     </div>
   );

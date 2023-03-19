@@ -4,8 +4,6 @@ import { WeatherCard } from "../WeatherCard/WeatherCard";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 
 export function Main({ weatherData, cards, onCardClick }) {
-
-
   // let temperature = weatherData.main?.temp;
   // const weatherType = () => {
   //   if (temperature >= 86) {
@@ -18,8 +16,18 @@ export function Main({ weatherData, cards, onCardClick }) {
   // };
 
   return (
-    <WeatherCard/>
-  )
-
- 
+    <main className="main">
+      <WeatherCard />
+      <section className="main__clothes-container">
+        <div className="main__description-container">
+          <p className="main__description">
+            Today is 75F/ You may want to wear:
+          </p>
+        </div>
+        <ul className="main__items">
+          
+        </ul>
+      </section>
+    </main>
+  );
 }

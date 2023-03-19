@@ -1,0 +1,16 @@
+.main {
+  max-width: 1360px;
+  background-color: red;
+}
+
+
+.main__description {
+  font-family: 'Cabinet Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  color: #000000;
+  text-align: left;
+  margin: 0;
+}
