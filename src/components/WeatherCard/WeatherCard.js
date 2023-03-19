@@ -5,11 +5,22 @@ import cloudPath from "../../images/cloudunion.svg";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 
 export function WeatherCard({ weatherData }) {
+  const currentTemperatureUnit = React.useContext(
+    CurrentTemperatureUnitContext
+  );
+  let temperature = weatherData?.temp;
   return (
     <div className="weather__container">
       <div className="weather__temperature-container">
-        <p className="weather__temperature">75</p>
-        <p className="weather__temperature">F</p>
+        {currentTemperatureUnit === "F" ? (
+          <p className="weather__temperature">
+            {Math.round(temperature)}°{currentTemperatureUnit}
+          </p>
+        ) : (
+          <p className="weather__temperature">
+            {Math.round(((temperature - 32) * 5) / 9)}°{currentTemperatureUnit}
+          </p>
+        )}
       </div>
 
       <div className="weather__images-container">

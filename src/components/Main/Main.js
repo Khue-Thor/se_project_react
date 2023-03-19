@@ -1,8 +1,9 @@
-import "./Main.css";
 import React from "react";
 import { WeatherCard } from "../WeatherCard/WeatherCard";
 import { ItemCard } from "../ItemCard/ItemCard";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
+import "./Main.css";
+
 
 export function Main({ weatherData, cards, onCardClick }) {
   // let temperature = weatherData.main?.temp;
