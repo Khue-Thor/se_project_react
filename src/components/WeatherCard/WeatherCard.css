@@ -1,4 +1,23 @@
 .weather__container {
-  background-color: red;
+  background-color: #00A3FF;
+  border-radius: 12px;
   max-width: 1360px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.weather__temperature-container {
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 16px;
+}
+
+.weather__temperature {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
+  color: #ffffff;
 }
