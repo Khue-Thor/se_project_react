@@ -22,9 +22,18 @@ function App() {
 
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
-    ? setCurrentTemperatureUnit("C")
-    : setCurrentTemperatureUnit("F");
-  }
+      ? setCurrentTemperatureUnit("C")
+      : setCurrentTemperatureUnit("F");
+  };
+
+  useEffect(() => {
+    Promise.all([api.getWeatherData(location, API_KEY)])
+      .then(([weatherInfo, clothing]) => {
+        setWeatherData(weatherInfo);
+        setClothingItems(clothing);
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   useEffect(() => {
     setClothingItems(clothingitems);
