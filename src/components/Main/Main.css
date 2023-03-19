@@ -27,4 +27,7 @@
 
 .main__items {
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 17px 20px;
 }
