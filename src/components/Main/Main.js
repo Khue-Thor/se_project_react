@@ -29,12 +29,20 @@ export function Main({ weatherData, cards, onCardClick }) {
             <p className="main__description">
               Today is {temperature}°F and it is {weatherType}
             </p>
-            <p className="main__descritipn_slash"> / </p>
+            <p className="main__description"> / </p>
             <p className="main__description">You may want to wear:</p>
           </div>
         </div>
         <ul className="main__items">
-          <ItemCard />
+          {cards
+            .filter((card) => card.weather === weatherType())
+            .map((filteredCard) => (
+              <ItemCard
+                key={filteredCard.id}
+                card={filteredCard}
+                onCardClick={onCardClick}
+              />
+            ))}
         </ul>
       </section>
     </main>

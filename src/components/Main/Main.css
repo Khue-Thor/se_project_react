@@ -3,8 +3,15 @@
   padding: 0 36px 0 36px;
 }
 
+
+
+.main__info {
+  display: flex;
+}
+
 .main__description-container {
   margin: 0 0 34px 0;
+  display: flex;
 }
 
 
@@ -15,7 +22,6 @@
   font-size: 20px;
   line-height: 25px;
   color: #000000;
-  text-align: left;
   margin: 0;
 }
 
