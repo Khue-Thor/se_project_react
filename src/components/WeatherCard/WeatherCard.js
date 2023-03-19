@@ -1,7 +1,7 @@
 import React from "react";
 import "./WeatherCard.css";
 import sunPath from "../../images/sun.svg";
-import cloudPath from "../../images/sun.svg";
+import cloudPath from "../../images/cloudunion.svg";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 
 export function WeatherCard({ weatherData }) {
@@ -13,8 +13,8 @@ export function WeatherCard({ weatherData }) {
       </div>
 
       <div className="weather__images-container">
-        <img className="weather__sunny" src={sunPath} alt="sun" />
         <img className="weather__cloud-union" src={cloudPath} alt="clouds" />
+        <img className="weather__sunny" src={sunPath} alt="sun" />
       </div>
     </div>
   );
