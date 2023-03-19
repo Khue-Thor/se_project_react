@@ -6,7 +6,8 @@ import { Header } from "../Hedaer/Header";
 import { Main } from "../Main/Main";
 import { api } from "../../utils/weatherApi";
 import { location, API_KEY } from "../../utils/constants";
-import clothingitems from "../../utils/clothingItems";
+import { defaultClothingItems } from "../../utils/clothingItems";
+
 function App() {
   const [weatherData, setWeatherData] = useState({});
   const [selectedCard, setSelectedCard] = useState(null);
@@ -30,10 +31,13 @@ function App() {
       .getWeatherData(location, API_KEY)
       .then((weatherInfo) => {
         setWeatherData(weatherInfo);
-        console.log(weatherInfo);
       })
       .catch((error) => console.error(error));
   }, []);
+
+  React.useEffect(() => {
+    setClothingItems(defaultClothingItems)
+  })
 
   return (
     <div className="App">

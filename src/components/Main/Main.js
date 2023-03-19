@@ -1,7 +1,7 @@
 import React from "react";
 import { WeatherCard } from "../WeatherCard/WeatherCard";
 import { ItemCard } from "../ItemCard/ItemCard";
-import clothingitems from "../../utils/clothingItems";
+
 import "./Main.css";
 
 export function Main({ weatherData, cards, onCardClick }) {
@@ -33,7 +33,7 @@ export function Main({ weatherData, cards, onCardClick }) {
             .filter((card) => card.weather === weatherType())
             .map((filteredCard) => (
               <ItemCard
-                key={filteredCard.id}
+                key={filteredCard._id}
                 card={filteredCard}
                 onCardClick={onCardClick}
               />
