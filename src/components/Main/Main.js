@@ -1,6 +1,7 @@
 import "./Main.css";
 import React from "react";
 import { WeatherCard } from "../WeatherCard/WeatherCard";
+import { ItemCard } from "../ItemCard/ItemCard";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 
 export function Main({ weatherData, cards, onCardClick }) {
@@ -25,7 +26,7 @@ export function Main({ weatherData, cards, onCardClick }) {
           </p>
         </div>
         <ul className="main__items">
-          
+          <ItemCard/>
         </ul>
       </section>
     </main>

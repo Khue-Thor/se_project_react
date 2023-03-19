@@ -1,6 +1,10 @@
 .main {
   max-width: 1360px;
-  background-color: red;
+  padding: 0 36px 0 36px;
+}
+
+.main__description-container {
+  margin: 0 0 34px 0;
 }
 
 
@@ -13,4 +17,8 @@
   color: #000000;
   text-align: left;
   margin: 0;
+}
+
+.main__items {
+  padding: 0;
 }
