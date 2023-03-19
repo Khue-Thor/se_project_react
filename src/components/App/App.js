@@ -26,19 +26,13 @@ function App() {
   };
 
   useEffect(() => {
-  
-      api
-        .getWeatherData(location, API_KEY)
-        .then((weatherInfo) => {
-          setWeatherData(weatherInfo);
-          console.log(weatherInfo)
-        })
-        .catch((error) => console.error(error));
-  
-  }, []);
-
-  useEffect(() => {
-    setClothingItems(clothingitems);
+    api
+      .getWeatherData(location, API_KEY)
+      .then((weatherInfo) => {
+        setWeatherData(weatherInfo);
+        console.log(weatherInfo);
+      })
+      .catch((error) => console.error(error));
   }, []);
 
   return (
