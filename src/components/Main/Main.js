@@ -6,6 +6,11 @@ import "./Main.css";
 
 
 export function Main({ weatherData, cards, onCardClick }) {
+
+  const { currentTemperatureUnit } = React.useContext(
+    CurrentTemperatureUnitContext
+  );
+
   // let temperature = weatherData.main?.temp;
   // const weatherType = () => {
   //   if (temperature >= 86) {
