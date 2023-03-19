@@ -1,6 +1,9 @@
 @import url(./components/App/App.css);
 @import url(./fonts/fonts.css);
 @import url(./components/Hedaer/Header.css);
+@import url(./components/Main/Main.css);
+@import url(./components//WeatherCard/WeatherCard.css);
+@import url(./components/ItemCard/ItemCard.css);
 
 
 body {
@@ -10,6 +13,4 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width: 1440px;
-  margin: auto;
 }

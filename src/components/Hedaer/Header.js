@@ -3,9 +3,11 @@ import "./Header.css";
 import React from "react";
 import logoPath from "../../images/wtwr.svg";
 import avatarPath from "../../images/avatar.svg";
+import { currentDate } from "../../utils/constants";
 
-export function Header({}) {
+export function Header({weatherData, handleAddClick}) {
 
+  // if (!weatherData) return null;
   const userName = "Terrance Tegegne";
 
   return (
@@ -13,11 +15,13 @@ export function Header({}) {
       <div className="header__container">
         <div className="header__logo-container">
           <img className="header__logo" src={logoPath} />
-          <p className="header__date-location">March 20, Saint Paul</p>
+          <p className="header__date-location">
+            {currentDate}, {weatherData.city}
+          </p>
         </div>
 
         <div className="header__info-container">
-          <button className="header__add-clothes">
+          <button className="header__add-clothes" type="button" onClick={handleAddClick}> 
             + Add clothes
           </button>
 
