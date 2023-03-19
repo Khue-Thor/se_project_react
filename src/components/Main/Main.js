@@ -1,6 +1,7 @@
 import React from "react";
 import { WeatherCard } from "../WeatherCard/WeatherCard";
 import { ItemCard } from "../ItemCard/ItemCard";
+import clothingitems from "../../utils/clothingItems";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 import "./Main.css";
 

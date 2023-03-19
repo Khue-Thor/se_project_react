@@ -27,14 +27,17 @@ function App() {
   };
 
   useEffect(() => {
-    Promise.all([api.getWeatherData(location, API_KEY)])
-      .then(([weatherInfo, clothing]) => {
-        setWeatherData(weatherInfo);
-        setClothingItems(clothing);
-      })
-      .catch((error) => console.error(error));
+    if (location.latitude && location.longitude) {
+      api
+        .getWeatherData(location, API_KEY)
+        .then((weatherInfo) => {
+          setWeatherData(weatherInfo);
+        })
+        .catch((error) => console.error(error));
+    }
   }, []);
 
+  
   useEffect(() => {
     setClothingItems(clothingitems);
   }, []);
