@@ -4,6 +4,10 @@
   margin: auto;
 }
 
+.App__content {
+  max-width: 100%;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

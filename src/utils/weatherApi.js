@@ -20,6 +20,6 @@ export default class Api {
 
 
 export const api = new Api({
-  baseUrl: `https://api.openweathermap.org/data/2.5/weather?`,
+  baseUrl: `http://api.openweathermap.org/data/2.5/weather?`,
   apiKey: "d54726166f875fbd211ff49b398e1392",
 })

@@ -16,7 +16,7 @@ export function Header({weatherData, handleAddClick}) {
         <div className="header__logo-container">
           <img className="header__logo" src={logoPath} />
           <p className="header__date-location">
-            {currentDate}, {weatherData.location}
+            {currentDate}, {weatherData.city}
           </p>
         </div>
 

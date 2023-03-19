@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-
-import logo from '../../logo.svg';
-import './App.css';
-import {Header} from "../Hedaer/Header";
-import {Main} from "../Main/Main";
-import {api} from '../../utils/weatherApi';
-import { location, API_KEY } from '../../utils/constants';
+import React from "react";
+import logo from "../../logo.svg";
+import "./App.css";
+import { Header } from "../Hedaer/Header";
+import { Main } from "../Main/Main";
+import { api } from "../../utils/weatherApi";
+import { location, API_KEY } from "../../utils/constants";
+import clothingitems from "../../utils/clothingItems";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 function App() {
   const [weatherData, setWeatherData] = useState({});
@@ -19,29 +20,48 @@ function App() {
     setIsImagePreviewOpen(true);
   };
 
-  const handleToggleSwitchChange = () => {
-    currentTemperatureUnit === "F"
-    ? setCurrentTemperatureUnit("C")
-    : setCurrentTemperatureUnit("F");
-  }
-   
+  // const handleToggleSwitchChange = () => {
+  //   currentTemperatureUnit === "F"
+  //   ? setCurrentTemperatureUnit("C")
+  //   : setCurrentTemperatureUnit("F");
+  // }
+
+  // useEffect(() => {
+  //   // Parallel execution to allow multiple async operations.
+  //   // Simplifying error handling easier to maintain
+  //   Promise.all(api.getWeatherData(location, API_KEY))
+  //     .then(([weatherInfo, clothing]) => {
+  //       setWeatherData(weatherInfo);
+  //       setClothingItems(clothing);
+  //     })
+  //     .catch((error) => console.error(error));
+  // }, []);
 
 
+useEffect(() => {
+    if(location.latitude && location.longitude) {
+      api.getWeatherData(location, API_KEY)
+        .then((data) => {
+          setWeatherData(data);
+        })
+        .catch((err) => console.log(err))
+    }
+  })
 
+  useEffect(() => {
+    setClothingItems(clothingitems)
+  }, [])
 
   return (
     <div className="App">
-       {/* <CurrentTemperatureUnitContext.Provider
-          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-        ></CurrentTemperatureUnitContext.Provider> */}
-      <Header 
-      weatherData= {weatherData}
-      />
-      <Main 
-       weatherData={weatherData}
-       cards={clothingitems}
-       onCardClick={handleCardClick}
-       />
+      <div className="App__content">
+        <Header weatherData={weatherData} />
+        <Main
+          weatherData={weatherData}
+          cards={clothingitems}
+          onCardClick={handleCardClick}
+        />
+      </div>
     </div>
   );
 }

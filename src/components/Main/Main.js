@@ -26,11 +26,18 @@ export function Main({ weatherData, cards, onCardClick }) {
       <section className="main__clothes-container">
         <div className="main__info">
           <div className="main__description-container">
-            <p className="main__description">
-              Today is {temperature}°F and it is {weatherType}
-            </p>
-            <p className="main__description"> / </p>
-            <p className="main__description">You may want to wear:</p>
+          {currentTemperatureUnit === "F" ? (
+              <p className="main__description">
+                Today is {Math.round(temperature)}°{currentTemperatureUnit} and
+                it is {weatherType()} / You may want to wear:
+              </p>
+            ) : (
+              <p className="main__description">
+                Today is {Math.round(((temperature - 32) * 5) / 9)}°
+                {currentTemperatureUnit} and it is {weatherType()} / You may
+                want to wear:
+              </p>
+            )}
           </div>
         </div>
         <ul className="main__items">
