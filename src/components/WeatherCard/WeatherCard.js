@@ -11,7 +11,7 @@ export function WeatherCard({ weatherData }) {
       <div className="weather__temperature-container">
        
           <p className="weather__temperature">
-            {Math.round(temperature)}°
+            {Math.round(temperature)}°F
           </p>
         
       </div>

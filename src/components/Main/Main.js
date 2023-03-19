@@ -23,7 +23,7 @@ export function Main({ weatherData, cards, onCardClick }) {
         <div className="main__info">
           <div className="main__description-container">
             <p className="main__description">
-              Today is {Math.round(temperature)}° and it is {weatherType()} /
+              Today is {Math.round(temperature)}°F and it is {weatherType()} /
               You may want to wear:
             </p>
           </div>
