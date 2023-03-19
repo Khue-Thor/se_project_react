@@ -26,18 +26,18 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
-  useEffect(() => {
-    if (location.latitude && location.longitude) {
-      api
-        .getWeatherData(location, API_KEY)
-        .then((weatherInfo) => {
-          setWeatherData(weatherInfo);
-        })
-        .catch((error) => console.error(error));
-    }
-  }, []);
+  // useEffect(() => {
+  //  
+//     api
+//       .getWeatherData(location, API_KEY)
+//       .then((weatherInfo) => {
+//         setWeatherData(weatherInfo);
+//       })
+//       .catch((error) => console.error(error));
+  //   
+  // }, []);
 
-  
+
   useEffect(() => {
     setClothingItems(clothingitems);
   }, []);
