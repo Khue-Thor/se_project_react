@@ -20,37 +20,15 @@ function App() {
     setIsImagePreviewOpen(true);
   };
 
-  // const handleToggleSwitchChange = () => {
-  //   currentTemperatureUnit === "F"
-  //   ? setCurrentTemperatureUnit("C")
-  //   : setCurrentTemperatureUnit("F");
-  // }
-
-  // useEffect(() => {
-  //   // Parallel execution to allow multiple async operations.
-  //   // Simplifying error handling easier to maintain
-  //   Promise.all(api.getWeatherData(location, API_KEY))
-  //     .then(([weatherInfo, clothing]) => {
-  //       setWeatherData(weatherInfo);
-  //       setClothingItems(clothing);
-  //     })
-  //     .catch((error) => console.error(error));
-  // }, []);
-
-
-useEffect(() => {
-    if(location.latitude && location.longitude) {
-      api.getWeatherData(location, API_KEY)
-        .then((data) => {
-          setWeatherData(data);
-        })
-        .catch((err) => console.log(err))
-    }
-  })
+  const handleToggleSwitchChange = () => {
+    currentTemperatureUnit === "F"
+    ? setCurrentTemperatureUnit("C")
+    : setCurrentTemperatureUnit("F");
+  }
 
   useEffect(() => {
-    setClothingItems(clothingitems)
-  }, [])
+    setClothingItems(clothingitems);
+  }, []);
 
   return (
     <div className="App">
