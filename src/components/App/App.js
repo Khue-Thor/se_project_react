@@ -7,7 +7,6 @@ import { Main } from "../Main/Main";
 import { api } from "../../utils/weatherApi";
 import { location, API_KEY } from "../../utils/constants";
 import clothingitems from "../../utils/clothingItems";
-import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 function App() {
   const [weatherData, setWeatherData] = useState({});
   const [selectedCard, setSelectedCard] = useState(null);
@@ -26,17 +25,17 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
-  // useEffect(() => {
-  //  
-//     api
-//       .getWeatherData(location, API_KEY)
-//       .then((weatherInfo) => {
-//         setWeatherData(weatherInfo);
-//       })
-//       .catch((error) => console.error(error));
-  //   
-  // }, []);
-
+  useEffect(() => {
+  
+      api
+        .getWeatherData(location, API_KEY)
+        .then((weatherInfo) => {
+          setWeatherData(weatherInfo);
+          console.log(weatherInfo)
+        })
+        .catch((error) => console.error(error));
+  
+  }, []);
 
   useEffect(() => {
     setClothingItems(clothingitems);
