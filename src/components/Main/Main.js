@@ -1,10 +1,10 @@
 import React from "react";
 import { WeatherCard } from "../WeatherCard/WeatherCard";
 import { ItemCard } from "../ItemCard/ItemCard";
-
 import "./Main.css";
 
 export function Main({ weatherData, cards, onCardClick }) {
+  
   let temperature = weatherData.main?.temp;
   const weatherType = () => {
     if (temperature >= 86) {

@@ -6,7 +6,7 @@ import { Header } from "../Hedaer/Header";
 import { Main } from "../Main/Main";
 import { api } from "../../utils/weatherApi";
 import { location, API_KEY } from "../../utils/constants";
-import { defaultClothingItems } from "../../utils/clothingItems";
+import {defaultClothingItems } from "../../utils/clothingItems";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
@@ -45,7 +45,7 @@ function App() {
         <Header weatherData={weatherData} />
         <Main
           weatherData={weatherData}
-          cards={clothingitems}
+          cards={defaultClothingItems}
           onCardClick={handleCardClick}
         />
       </div>

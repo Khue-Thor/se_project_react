@@ -10,6 +10,9 @@
   justify-content: center;
 }
 
+.card__content {
+
+}
 .card__title {
   width: fit-content;
   background-color: #fff;
@@ -21,4 +24,8 @@
   line-height: 20px;
   border-radius: 4px;
   color: #000;
+}
+
+.card__image {
+  width: 250px;
 }

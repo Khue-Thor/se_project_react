@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import "./WeatherCard.css";
 import sunPath from "../../images/sun.svg";
 import cloudPath from "../../images/cloudunion.svg";
@@ -9,11 +8,7 @@ export function WeatherCard({ weatherData }) {
   return (
     <div className="weather__container">
       <div className="weather__temperature-container">
-       
-          <p className="weather__temperature">
-            {Math.round(temperature)}°F
-          </p>
-        
+        <p className="weather__temperature">{Math.round(temperature)}°F</p>
       </div>
 
       <div className="weather__images-container">
