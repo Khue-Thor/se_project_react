@@ -15,7 +15,6 @@
   max-width: 498px;
   background: #FFFFFF;
   border-radius: 16px;
-
 }
 
 .modal__preview-close {
@@ -29,6 +28,14 @@
   top: 27px;
 }
 
+.modal__preview-info {
+  font-family: 'Cabinet Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
 .modal__preview-image {
   width: 498px;
   height: 498px;
@@ -37,6 +44,16 @@
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   cursor: pointer;
-  margin: 0;
+  margin: 0 0 20px 0;
   padding: 0;
+}
+
+.modal__preview-title {
+ text-align: left;
+ margin: 0 0 12px 32px;
+}
+
+.modal__preview-description {
+  text-align: left;
+  margin: 0 0 32px 32px;
 }
