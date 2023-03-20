@@ -1,39 +1,82 @@
 import React from "react";
-import './AddItemModal.css'
+import "./AddItemModal.css";
 export const AddItemModal = () => {
   return (
     <div className="modal">
       <div className="modal__container">
-      <form className="modal__form">
-        <h2 className="modal__form-title">New Garment</h2>
-        <fieldset className="modal__form-fieldset">
-          <label className="modal__form-label">Name</label>
-          <input
-          className="modal__form-input"
-            type="text"
-            name="clothName"
-            value=""
-            placeholder="Name"
-            minLength="1"
-            maxLength="30"
-            required
-          />
-        </fieldset>
+        <form className="modal__form">
+          <h2 className="modal__form-title">New Garment</h2>
+          <fieldset className="modal__form-fieldset">
+            <label className="modal__form-label">Name</label>
+            <input
+              className="modal__form-input"
+              type="text"
+              name="clothName"
+              placeholder="Name"
+              minLength="1"
+              maxLength="30"
+              required
+            />
+            <span className="modal__input-error"></span>
+          </fieldset>
 
-        <fieldset className="modal__form-fieldset">
-          <label className="modal__form-label">Image</label>
-          <input
-          className="modal__form-input"
-            type="url"
-            name="clothName"
-            value=""
-            placeholder="Image URL"
-            minLength="1"
-            maxLength="30"
-            required
-          />
-        </fieldset>
-      </form>
+          <fieldset className="modal__form-fieldset">
+            <label className="modal__form-label">Image</label>
+            <input
+              className="modal__form-input"
+              type="url"
+              name="clothName"
+              placeholder="Image URL"
+              minLength="1"
+              maxLength="30"
+              required
+            />
+            <span className="modal__input-error"></span>
+          </fieldset>
+
+          <fieldset className="modal__form-fieldset">
+            <label className="modal__form-label">
+              Select the weather type:
+            </label>
+            <div className="modal__form-input_type_radio">
+              <div className="modal__form-choice">
+                <input
+                  type="radio"
+                  id="choiceHot"
+                  name="weatherType"
+                  value="hot"
+                />
+                <label className="modal__label_radio" htmlFor="choiceHot">
+                  Hot
+                </label>
+              </div>
+
+              <div className="modal__form-choice">
+                <input
+                  type="radio"
+                  id="choiceHot"
+                  name="weatherType"
+                  value="hot"
+                />
+                <label className="modal__label_radio" htmlFor="choiceHot">
+                  Warm
+                </label>
+              </div>
+
+              <div className="modal__form-choice">
+                <input
+                  type="radio"
+                  id="choiceHot"
+                  name="weatherType"
+                  value="hot"
+                />
+                <label className="modal__label_radio" htmlFor="choiceHot">
+                  Cold
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </form>
       </div>
     </div>
   );
