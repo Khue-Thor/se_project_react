@@ -37,8 +37,8 @@
 }
 
 .modal__preview-image {
-  width: 498px;
-  height: 498px;
+  min-width: 498px;
+  min-height: 498px;
   object-fit: cover;
   border-radius: 5px;
   border-top-left-radius: 16px;
