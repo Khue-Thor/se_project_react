@@ -5,28 +5,53 @@
   bottom: 0;
   right: 0;
   background: rgb(0, 0, 0, 0.5);
-  visibility: hidden;
+  /* visibility: hidden; */
   transition: visibility 0s linear 0.3s, opacity 0.3s linear;
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
-  
+  /* pointer-events: none; */
+  z-index: 10;
 }
 
 .modal__container {
   background-color: #ffffff;
   border-radius: 20px;
-  width: 496px;
-  margin: auto 0;
-  display: flex;
-  justify-content: center;
-  
+  max-width: 496px;
+  padding: 0 28px 0 28px;
 }
 
 .modal__form {
   display: flex;
   flex-direction: column;
+}
+
+.modal__form-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+
+.modal__form-title {
+  max-width: fit-content;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+  text-align: left;
+  padding: 28px 0 24px 12px;
+  margin: 0;
+}
+
+.modal__close {
+  width: 16px;
+  height: 16px;
+  background: url("../../images/close-icon.svg") center no-repeat;
+  border: none;
+  cursor: pointer;
 }
 
 .modal__form-fieldset {

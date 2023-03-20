@@ -4,8 +4,12 @@ export const AddItemModal = () => {
   return (
     <div className="modal">
       <div className="modal__container">
+      <div className="modal__form-header">
+            <h2 className="modal__form-title">New Garment</h2>
+            <button className="modal__close"></button>
+          </div>
         <form className="modal__form">
-          <h2 className="modal__form-title">New Garment</h2>
+          
           <fieldset className="modal__form-fieldset">
             <label className="modal__form-label">Name</label>
             <input
@@ -76,7 +80,9 @@ export const AddItemModal = () => {
               </div>
             </div>
           </fieldset>
-          <button type="Submit" className="modal__form-save">Add garment</button>
+          <button type="Submit" className="modal__form-save">
+            Add garment
+          </button>
         </form>
       </div>
     </div>
