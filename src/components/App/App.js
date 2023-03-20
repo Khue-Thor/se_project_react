@@ -15,7 +15,6 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [clothingitems, setClothingItems] = useState([]);
   const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
