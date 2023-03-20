@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./AddItemModal.css";
-export const AddItemModal = ({name, isOpen, onAddItem, closeModal, onSubmit}) => {
-
+export const AddItemModal = ({
+  name,
+  isOpen,
+  onAddItem,
+  closeModal,
+  onSubmit,
+}) => {
   const [itemName, setItemName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
-  // useEffect(() => {
-  //   setItemName("");
-  //   setImageUrl("");
-  // }, [isOpen]);
+  useEffect(() => {
+    setItemName("");
+    setImageUrl("");
+  }, [isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -17,12 +22,15 @@ export const AddItemModal = ({name, isOpen, onAddItem, closeModal, onSubmit}) =>
   return (
     <div className="modal">
       <div className="modal__container">
-      <div className="modal__form-header">
-            <h2 className="modal__form-title">New Garment</h2>
-            <button className="modal__close" type="button" onClick={closeModal}></button>
-          </div>
+        <div className="modal__form-header">
+          <h2 className="modal__form-title">New Garment</h2>
+          <button
+            className="modal__close"
+            type="button"
+            onClick={closeModal}
+          ></button>
+        </div>
         <form className="modal__form" onSubmit={handleSubmit}>
-          
           <fieldset className="modal__form-fieldset">
             <label className="modal__form-label">Name</label>
             <input
