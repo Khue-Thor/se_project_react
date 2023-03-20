@@ -1,0 +1,66 @@
+.modal {
+  width: 496px;
+  border-radius: 200px;
+}
+
+.modal__container {
+  background-color: rgb(221, 227, 225);
+  border-radius: 20px;
+  width: 496px;
+  margin: auto 0;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__form-fieldset {
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: none;
+  margin: 0 0 24px 0;
+}
+
+.modal__form-input {
+  box-sizing: border-box;
+  position: relative;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #000000;
+  padding: 0;
+  border: none;
+  border-bottom: 1px rgb(0, 0, 0) solid;
+}
+
+.modal__form-label {
+  text-align: left;
+}
+
+.modal__form-input_type_radio {
+
+}
+
+.modal__form-choice {
+  display: flex;
+  margin: 0 0 15px 0;
+}
+
+.modal__form-save {
+  width: fit-content;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #ffffff;
+  padding: 8px 16px 8px 16px;
+  margin: 0 0 36px 28px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
