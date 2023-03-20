@@ -76,6 +76,7 @@ export const AddItemModal = () => {
               </div>
             </div>
           </fieldset>
+          <button type="Submit" className="modal__form-save">Add garment</button>
         </form>
       </div>
     </div>
