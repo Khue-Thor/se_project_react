@@ -79,10 +79,6 @@ align-items: center;
   text-align: left;
 }
 
-.modal__form-input_type_radio {
-
-}
-
 .modal__form-choice {
   display: flex;
   margin: 0 0 15px 0;
@@ -98,7 +94,7 @@ align-items: center;
   color: #ffffff;
   padding: 8px 16px 8px 16px;
   margin: 0 0 36px 16px;
-  background: rgba(0, 0, 0, 0.3);
+  background: #000000;
   border-radius: 4px;
   border: none;
 }
