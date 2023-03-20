@@ -9,7 +9,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
 }
 
 .modal__container {
@@ -40,7 +39,7 @@ align-items: center;
   line-height: 20px;
   color: #000000;
   text-align: left;
-  padding: 28px 0 24px 12px;
+  padding: 28px 0 24px 0;
   margin: 0;
 }
 
@@ -80,10 +79,6 @@ align-items: center;
   text-align: left;
 }
 
-.modal__form-input_type_radio {
-
-}
-
 .modal__form-choice {
   display: flex;
   margin: 0 0 15px 0;
@@ -98,8 +93,9 @@ align-items: center;
   line-height: 1.2;
   color: #ffffff;
   padding: 8px 16px 8px 16px;
-  margin: 0 0 36px 16px;
-  background: rgba(0, 0, 0, 0.3);
+  margin: 0 0 36px 5px;
+  background: #000000;
   border-radius: 4px;
+  cursor: pointer;
   border: none;
 }

@@ -22,12 +22,23 @@ function App() {
     setIsImagePreviewOpen(true);
   };
 
-  const handleAddClick = () => setIsAddItemModalOpen(true)
+  const handleAddClick = () => setIsAddItemModalOpen(true);
 
   const closeModal = () => {
     // setIsImagePreviewOpen(false);
     setIsAddItemModalOpen(false);
   };
+
+  useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    };
+
+    document.addEventListener("keydown", closeByEscape);
+    return () => document.removeEventListener("keydown", closeByEscape);
+  }, []);
 
   useEffect(() => {
     api
@@ -38,25 +49,27 @@ function App() {
       .catch((error) => console.error(error));
   }, []);
 
+  function handleAddItemSubmit() {
+    closeModal();
+  }
 
   return (
     <div className="App">
       <div className="App__content">
-        <Header 
-        weatherData={weatherData}
-        handleAddClick={handleAddClick} />
+        <Header weatherData={weatherData} handleAddClick={handleAddClick} />
         <Main
           weatherData={weatherData}
           cards={defaultClothingItems}
           onCardClick={handleCardClick}
         />
-        <Footer/>
+        <Footer />
       </div>
       {isAddItemModalOpen && (
         <AddItemModal
           name="create"
           isOpen={isAddItemModalOpen}
-          closeModal={closeModal}
+          onCloseModal={closeModal}
+          onAddItem={handleAddItemSubmit}
         />
       )}
     </div>
