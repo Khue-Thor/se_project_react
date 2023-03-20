@@ -38,6 +38,10 @@ function App() {
       .catch((error) => console.error(error));
   }, []);
 
+  function handleAddItemSubmit() {
+    closeModal();
+  }
+
 
   return (
     <div className="App">
@@ -57,6 +61,7 @@ function App() {
           name="create"
           isOpen={isAddItemModalOpen}
           closeModal={closeModal}
+          onAddItem={handleAddItemSubmit}
         />
       )}
     </div>
