@@ -1,0 +1,18 @@
+.modal__preview {
+
+}
+
+.modal__preview-container {
+  width: 498px;
+  background-color: red;
+}
+
+.modal__preview-close {
+  width: 14px;
+  height: 14px;
+  background: url("../../images/close-icon.svg") center no-repeat;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  left: calc(100% - 270px);
+}

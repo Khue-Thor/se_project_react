@@ -6,6 +6,7 @@ import { Header } from "../Hedaer/Header";
 import { Main } from "../Main/Main";
 import { Footer } from "../Footer/Footer";
 import { AddItemModal } from "../AddItemModal/AddItemModal";
+import { ItemCardModal } from "../ItemCardModal/ItemCardModal";
 import { api } from "../../utils/weatherApi";
 import { location, API_KEY } from "../../utils/constants";
 import { defaultClothingItems } from "../../utils/clothingItems";
@@ -62,6 +63,7 @@ function App() {
           cards={defaultClothingItems}
           onCardClick={handleCardClick}
         />
+        <ItemCardModal/>
         <Footer />
       </div>
       {isAddItemModalOpen && (
