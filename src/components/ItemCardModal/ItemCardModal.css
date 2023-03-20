@@ -1,10 +1,21 @@
 .modal__preview {
-
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgb(0, 0, 0, 0.5);
+  transition: visibility 0s linear 0.3s, opacity 0.3s linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal__preview-container {
-  width: 498px;
-  background-color: red;
+  max-width: 498px;
+  background: #FFFFFF;
+  border-radius: 16px;
+
 }
 
 .modal__preview-close {
@@ -14,5 +25,18 @@
   border: none;
   cursor: pointer;
   position: relative;
-  left: calc(100% - 270px);
+  right: -213px;
+  top: 27px;
+}
+
+.modal__preview-image {
+  width: 498px;
+  height: 498px;
+  object-fit: cover;
+  border-radius: 5px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
 }

@@ -26,7 +26,7 @@ function App() {
   const handleAddClick = () => setIsAddItemModalOpen(true);
 
   const closeModal = () => {
-    // setIsImagePreviewOpen(false);
+    setIsImagePreviewOpen(false);
     setIsAddItemModalOpen(false);
   };
 
@@ -63,7 +63,7 @@ function App() {
           cards={defaultClothingItems}
           onCardClick={handleCardClick}
         />
-        <ItemCardModal/>
+
         <Footer />
       </div>
       {isAddItemModalOpen && (
@@ -72,6 +72,13 @@ function App() {
           isOpen={isAddItemModalOpen}
           onCloseModal={closeModal}
           onAddItem={handleAddItemSubmit}
+        />
+      )}
+      {isImagePreviewOpen && (
+        <ItemCardModal
+          isOpen={isImagePreviewOpen}
+          card={selectedCard}
+          onCloseModal={closeModal}
         />
       )}
     </div>
