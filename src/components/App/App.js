@@ -4,6 +4,7 @@ import logo from "../../logo.svg";
 import "./App.css";
 import { Header } from "../Hedaer/Header";
 import { Main } from "../Main/Main";
+import { Footer } from "../Footer/Footer";
 import { AddItemModal } from "../AddItemModal/AddItemModal";
 import { api } from "../../utils/weatherApi";
 import { location, API_KEY } from "../../utils/constants";
@@ -21,12 +22,6 @@ function App() {
     setIsImagePreviewOpen(true);
   };
 
-  const handleToggleSwitchChange = () => {
-    currentTemperatureUnit === "F"
-      ? setCurrentTemperatureUnit("C")
-      : setCurrentTemperatureUnit("F");
-  };
-
   useEffect(() => {
     api
       .getWeatherData(location, API_KEY)
@@ -36,9 +31,6 @@ function App() {
       .catch((error) => console.error(error));
   }, []);
 
-  React.useEffect(() => {
-    setClothingItems(defaultClothingItems);
-  });
 
   return (
     <div className="App">
@@ -50,6 +42,7 @@ function App() {
           onCardClick={handleCardClick}
         />
         <AddItemModal/>
+        <Footer/>
       </div>
     </div>
   );

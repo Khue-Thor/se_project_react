@@ -4,7 +4,7 @@
 @import url(./components/Main/Main.css);
 @import url(./components//WeatherCard/WeatherCard.css);
 @import url(./components/ItemCard/ItemCard.css);
-
+@import url(./components/AddItemModal/AddItemModal.css);
 
 body {
   margin: 0;

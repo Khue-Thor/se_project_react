@@ -5,12 +5,12 @@
   bottom: 0;
   right: 0;
   background: rgb(0, 0, 0, 0.5);
-  /* visibility: hidden; */
+  visibility: hidden;
   transition: visibility 0s linear 0.3s, opacity 0.3s linear;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* pointer-events: none; */
+  pointer-events: none;
   z-index: 10;
 }
 
@@ -61,6 +61,7 @@ align-items: center;
   gap: 8px;
   border: none;
   margin: 0 0 24px 0;
+  padding: 0;
 }
 
 .modal__form-input {
