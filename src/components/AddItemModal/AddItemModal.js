@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./AddItemModal.css";
-export const AddItemModal = ({name, isOpen, isClose}) => {
-  
+export const AddItemModal = ({name, isOpen, onAddItem, closeModal, onSubmit}) => {
+
+  const [itemName, setItemName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+
+  // useEffect(() => {
+  //   setItemName("");
+  //   setImageUrl("");
+  // }, [isOpen]);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    onAddItem(name, imageUrl);
+  }
   return (
     <div className="modal">
       <div className="modal__container">
       <div className="modal__form-header">
             <h2 className="modal__form-title">New Garment</h2>
-            <button className="modal__close"></button>
+            <button className="modal__close" type="button" onClick={closeModal}></button>
           </div>
-        <form className="modal__form">
+        <form className="modal__form" onSubmit={handleSubmit}>
           
           <fieldset className="modal__form-fieldset">
             <label className="modal__form-label">Name</label>
@@ -17,6 +29,7 @@ export const AddItemModal = ({name, isOpen, isClose}) => {
               className="modal__form-input"
               type="text"
               name="clothName"
+              // value={itemName}
               placeholder="Name"
               minLength="1"
               maxLength="30"
@@ -31,6 +44,7 @@ export const AddItemModal = ({name, isOpen, isClose}) => {
               className="modal__form-input"
               type="url"
               name="clothName"
+              // value={imageUrl}
               placeholder="Image URL"
               minLength="1"
               maxLength="30"

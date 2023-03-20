@@ -24,6 +24,11 @@ function App() {
 
   const handleAddClick = () => setIsAddItemModalOpen(true)
 
+  const closeModal = () => {
+    // setIsImagePreviewOpen(false);
+    setIsAddItemModalOpen(false);
+  };
+
   useEffect(() => {
     api
       .getWeatherData(location, API_KEY)
@@ -37,7 +42,9 @@ function App() {
   return (
     <div className="App">
       <div className="App__content">
-        <Header weatherData={weatherData} />
+        <Header 
+        weatherData={weatherData}
+        handleAddClick={handleAddClick} />
         <Main
           weatherData={weatherData}
           cards={defaultClothingItems}
@@ -47,7 +54,9 @@ function App() {
       </div>
       {isAddItemModalOpen && (
         <AddItemModal
-          
+          name="create"
+          isOpen={isAddItemModalOpen}
+          closeModal={closeModal}
         />
       )}
     </div>
