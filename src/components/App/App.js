@@ -15,11 +15,14 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [clothingitems, setClothingItems] = useState([]);
   const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
+  const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
     setIsImagePreviewOpen(true);
   };
+
+  const handleAddClick = () => setIsAddItemModalOpen(true)
 
   useEffect(() => {
     api
@@ -40,9 +43,13 @@ function App() {
           cards={defaultClothingItems}
           onCardClick={handleCardClick}
         />
-        <AddItemModal/>
         <Footer/>
       </div>
+      {isAddItemModalOpen && (
+        <AddItemModal
+          
+        />
+      )}
     </div>
   );
 }

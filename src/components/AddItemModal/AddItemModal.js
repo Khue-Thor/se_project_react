@@ -1,6 +1,7 @@
 import React from "react";
 import "./AddItemModal.css";
-export const AddItemModal = () => {
+export const AddItemModal = ({name, isOpen, isClose}) => {
+  
   return (
     <div className="modal">
       <div className="modal__container">
