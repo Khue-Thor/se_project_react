@@ -5,8 +5,7 @@ import logoPath from "../../images/wtwr.svg";
 import avatarPath from "../../images/avatar.svg";
 import { currentDate } from "../../utils/constants";
 
-export function Header({weatherData, handleAddClick}) {
-
+export function Header({ weatherData, handleAddClick }) {
   // if (!weatherData) return null;
   const userName = "Terrance Tegegne";
 
@@ -21,12 +20,16 @@ export function Header({weatherData, handleAddClick}) {
         </div>
 
         <div className="header__info-container">
-          <button className="header__add-clothes" type="button" onClick={handleAddClick}> 
+          <button
+            className="header__add-clothes"
+            type="button"
+            onClick={handleAddClick}
+          >
             + Add clothes
           </button>
 
           <p className="header__username">{userName}</p>
-          <img className="header__avatar" alt="avatar" src={avatarPath}/>
+          <img className="header__avatar" alt="avatar" src={avatarPath} />
         </div>
       </div>
     </header>

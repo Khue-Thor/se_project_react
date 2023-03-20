@@ -4,9 +4,10 @@ import logo from "../../logo.svg";
 import "./App.css";
 import { Header } from "../Hedaer/Header";
 import { Main } from "../Main/Main";
+import { AddItemModal } from "../AddItemModal/AddItemModal";
 import { api } from "../../utils/weatherApi";
 import { location, API_KEY } from "../../utils/constants";
-import {defaultClothingItems } from "../../utils/clothingItems";
+import { defaultClothingItems } from "../../utils/clothingItems";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
@@ -36,8 +37,8 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    setClothingItems(defaultClothingItems)
-  })
+    setClothingItems(defaultClothingItems);
+  });
 
   return (
     <div className="App">
@@ -48,6 +49,7 @@ function App() {
           cards={defaultClothingItems}
           onCardClick={handleCardClick}
         />
+        <AddItemModal/>
       </div>
     </div>
   );
