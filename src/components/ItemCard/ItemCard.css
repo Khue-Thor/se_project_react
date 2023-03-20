@@ -29,6 +29,7 @@
   color: #000;
   padding: 2px 12px 2px 12px;
   margin: 0;
+  border-radius: 4px;
 }
 
 .card__image {
