@@ -11,7 +11,7 @@ export function ItemCardModal({ card, onCloseModal }) {
           onClick={() => onCloseModal(null)}
         ></button>
         <div className="modal__preview-info">
-          <img className="modal__preview-image" src={card.list} alt={card?.name}/>
+          <img className="modal__preview-image" src={card?.link} alt={card?.name}/>
           <p className="modal__preview-title">{card?.name}</p>
           <p className="modal__preview-description">Weather: {card?.weather}</p>
         </div>

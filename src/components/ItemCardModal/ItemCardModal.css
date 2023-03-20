@@ -24,8 +24,9 @@
   border: none;
   cursor: pointer;
   position: relative;
-  right: -213px;
-  top: 27px;
+  top:20px;
+  right: -217px;
+  z-index: 2;
 }
 
 .modal__preview-info {
@@ -37,15 +38,16 @@
 }
 
 .modal__preview-image {
-  min-width: 498px;
-  min-height: 498px;
+  width: 498px;
+  height: 498px;
   object-fit: cover;
   border-radius: 5px;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   cursor: pointer;
-  margin: 0 0 20px 0;
   padding: 0;
+  position: relative;
+  top:-20px;
 }
 
 .modal__preview-title {
