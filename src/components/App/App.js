@@ -69,17 +69,12 @@ function App() {
       {isAddItemModalOpen && (
         <AddItemModal
           name="create"
-          isOpen={isAddItemModalOpen}
           onCloseModal={closeModal}
           onAddItem={handleAddItemSubmit}
         />
       )}
       {isImagePreviewOpen && (
-        <ItemCardModal
-          isOpen={isImagePreviewOpen}
-          card={selectedCard}
-          onCloseModal={closeModal}
-        />
+        <ItemCardModal card={selectedCard} onCloseModal={closeModal} />
       )}
     </div>
   );
