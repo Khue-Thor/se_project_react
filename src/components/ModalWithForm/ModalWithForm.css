@@ -91,7 +91,7 @@ align-items: center;
 .modal__form-choice {
   display: flex;
   margin: 0px 0 8px 0;
-  gap: 11px;
+  gap: 8px;
   font-family: 'Cabinet Grotesk';
   font-style: normal;
   font-weight: 700;
@@ -99,6 +99,11 @@ align-items: center;
   line-height: 20px;
   color: #000000;
 }
+
+.modal__weather-choice:visited {
+  color: #000000;
+}
+
 
 .modal__form-choice:last-of-type {
   margin: 0;

@@ -54,7 +54,7 @@ export const AddItemModal = ({
         <label className="modal__form-label">Select the weather type:</label>
         <div className="modal__form-input_type_radio">
           <div className="modal__form-choice">
-            <input type="radio" id="choiceHot" name="weatherType" value="hot" />
+            <input clase="moda" type="radio" id="choiceHot" name="weatherType" value="hot"/>
             <label className="modal__label_radio" htmlFor="choiceHot">
               Hot
             </label>
