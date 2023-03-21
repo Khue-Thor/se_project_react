@@ -71,7 +71,6 @@ function App() {
         <AddItemModal
           name="create"
           onCloseModal={closeModal}
-          onSubmit={handleAddItemSubmit}
           onAddItem={handleAddItemSubmit}
         />
       )}

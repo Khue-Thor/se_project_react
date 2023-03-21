@@ -2,7 +2,10 @@ import React, { Children } from "react";
 import "./ModalWithForm.css";
 
 export function ModalWithForm({ title, closeModal, onSubmit, children }) {
-  
+  function handleSubmit(e) {
+    e.preventDefault();
+    onSubmit();
+  }
   return (
     <div className="modal">
       <div className="modal__container">
@@ -14,7 +17,7 @@ export function ModalWithForm({ title, closeModal, onSubmit, children }) {
             onClick={closeModal}
           />
         </div>
-        <form className="modal__form" onSubmit={onSubmit}>
+        <form className="modal__form" onSubmit={handleSubmit}>
           {children}
           <button type="Submit" className="modal__form-save">
             Add garment

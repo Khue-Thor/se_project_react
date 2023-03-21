@@ -17,10 +17,9 @@ export const AddItemModal = ({
   }, [isOpen]);
 
   function handleSubmit(e) {
-    e.preventDefault();
-    onSubmit();
     onAddItem(itemName, imageUrl);
   }
+  
   return (
     <ModalWithForm
       title="New Garment"
