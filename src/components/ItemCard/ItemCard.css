@@ -1,6 +1,5 @@
 .card {
-  max-width: 325px;
-  height: 328px;
+  max-width: 328px;
   background: #e9e9e9;
   border-radius: 19px;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -32,7 +31,7 @@
 }
 
 .card__image {
-  width: 286px;
+  max-width: 310px;
   border-radius: 19px;
   
 }
