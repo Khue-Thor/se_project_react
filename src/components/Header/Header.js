@@ -6,7 +6,8 @@ import avatarPath from "../../images/avatar.svg";
 import { currentDate } from "../../utils/constants";
 
 export function Header({ weatherData, handleAddClick }) {
-  // if (!weatherData) return null;
+  
+  if (!weatherData) return null;
   const userName = "Terrance Tegegne";
 
   return (

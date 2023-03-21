@@ -63,13 +63,12 @@ align-items: center;
 
 .modal__form-input {
   box-sizing: border-box;
-  position: relative;
   font-family: 'Cabinet Grotesk', sans-serif;
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.2;
-  color: #000000;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.5);
   padding: 0;
   border: none;
   border-bottom: 1px rgb(0, 0, 0) solid;
@@ -77,11 +76,22 @@ align-items: center;
 
 .modal__form-label {
   text-align: left;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.modal__form-input_type_radio {
+  margin: 12px 0 0 0;
 }
 
 .modal__form-choice {
   display: flex;
-  margin: 0 0 15px 0;
+  margin: 0px 0 8px 0;
+  gap: 11px;
 }
 
 .modal__form-choice:last-of-type {

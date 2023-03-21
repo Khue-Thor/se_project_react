@@ -12,6 +12,7 @@ import { location, API_KEY } from "../../utils/constants";
 import { defaultClothingItems } from "../../utils/clothingItems";
 
 function App() {
+
   const [weatherData, setWeatherData] = useState({});
   const [selectedCard, setSelectedCard] = useState(null);
   const [clothingitems, setClothingItems] = useState([]);
@@ -70,6 +71,7 @@ function App() {
         <AddItemModal
           name="create"
           onCloseModal={closeModal}
+          onSubmit={handleAddItemSubmit}
           onAddItem={handleAddItemSubmit}
         />
       )}

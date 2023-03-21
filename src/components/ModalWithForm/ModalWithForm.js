@@ -2,6 +2,7 @@ import React, { Children } from "react";
 import "./ModalWithForm.css";
 
 export function ModalWithForm({ title, closeModal, onSubmit, children }) {
+  
   return (
     <div className="modal">
       <div className="modal__container">

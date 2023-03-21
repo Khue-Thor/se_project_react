@@ -2,6 +2,7 @@ import React from "react";
 import "./ItemModal.css";
 
 export function ItemModal({ card, onCloseModal }) {
+  
   return (
     <div className={`modal__preview`}>
       <div className="modal__preview-container">

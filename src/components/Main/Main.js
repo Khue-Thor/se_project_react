@@ -4,6 +4,7 @@ import { ItemCard } from "../ItemCard/ItemCard";
 import "./Main.css";
 
 export function Main({ weatherData, cards, onCardClick }) {
+  
   const temperature = weatherData.main?.temp;
   const getWeatherType = () => {
     if (temperature >= 86) {

@@ -1,6 +1,7 @@
 import React from "react";
 import "./ItemCard.css";
 export function ItemCard({ card, onCardClick }) {
+  
   return (
     <div className="card" onClick={() => onCardClick(card)}>
       <div className="card__content">

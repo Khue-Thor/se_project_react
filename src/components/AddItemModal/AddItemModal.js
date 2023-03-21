@@ -7,6 +7,7 @@ export const AddItemModal = ({
   onSubmit,
   onCloseModal,
 }) => {
+
   const [itemName, setItemName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
@@ -17,6 +18,7 @@ export const AddItemModal = ({
 
   function handleSubmit(e) {
     e.preventDefault();
+    onSubmit();
     onAddItem(itemName, imageUrl);
   }
   return (

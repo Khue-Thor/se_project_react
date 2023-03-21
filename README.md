@@ -6,7 +6,7 @@ The idea of this project is, we make calls to an API, that responds with the dai
 
 Figma Design: https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR?node-id=404-907&t=uUXZXS3afY5Q8GyZ-0
 
-Teachnologies:
+Technologies:
 
 React: https://react.dev/
 
