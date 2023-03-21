@@ -84,6 +84,10 @@ align-items: center;
   margin: 0 0 15px 0;
 }
 
+.modal__form-choice:last-of-type {
+  margin: 0;
+}
+
 .modal__form-save {
   width: fit-content;
   font-family: 'Cabinet Grotesk', sans-serif;

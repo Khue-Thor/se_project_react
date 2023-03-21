@@ -8,7 +8,7 @@ export function ItemModal({ card, onCloseModal }) {
         <button
           className="modal__preview-close"
           type="button"
-          onClick={() => onCloseModal(null)}
+          onClick={onCloseModal}
         ></button>
         <div className="modal__preview-info">
           <img

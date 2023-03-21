@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import logo from "../../logo.svg";
 import "./App.css";
-import { Header } from "../Hedaer/Header";
+import { Header } from "../Header/Header";
 import { Main } from "../Main/Main";
 import { Footer } from "../Footer/Footer";
 import { AddItemModal } from "../AddItemModal/AddItemModal";
@@ -44,8 +44,8 @@ function App() {
   useEffect(() => {
     api
       .getWeatherData(location, API_KEY)
-      .then((weatherInfo) => {
-        setWeatherData(weatherInfo);
+      .then((setweatherInfo) => {
+        setWeatherData(setweatherInfo);
       })
       .catch((error) => console.error(error));
   }, []);
