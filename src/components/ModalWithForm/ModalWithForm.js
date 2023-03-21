@@ -11,7 +11,7 @@ export function ModalWithForm({ title, closeModal, onSubmit, children }) {
             className="modal__close"
             type="button"
             onClick={closeModal}
-          ></button>
+          />
         </div>
         <form className="modal__form" onSubmit={onSubmit}>
           {children}
