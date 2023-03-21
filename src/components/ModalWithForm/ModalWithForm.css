@@ -99,3 +99,7 @@ align-items: center;
   cursor: pointer;
   border: none;
 }
+
+.modal__form-save:hover {
+  background: rgba(0, 0, 0, 0.6);
+}

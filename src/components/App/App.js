@@ -6,6 +6,7 @@ import { Header } from "../Hedaer/Header";
 import { Main } from "../Main/Main";
 import { Footer } from "../Footer/Footer";
 import { AddItemModal } from "../AddItemModal/AddItemModal";
+import { ItemModal } from "../ItemModal/ItemModal";
 import { api } from "../../utils/weatherApi";
 import { location, API_KEY } from "../../utils/constants";
 import { defaultClothingItems } from "../../utils/clothingItems";
@@ -25,7 +26,7 @@ function App() {
   const handleAddClick = () => setIsAddItemModalOpen(true);
 
   const closeModal = () => {
-    // setIsImagePreviewOpen(false);
+    setIsImagePreviewOpen(false);
     setIsAddItemModalOpen(false);
   };
 
@@ -62,15 +63,18 @@ function App() {
           cards={defaultClothingItems}
           onCardClick={handleCardClick}
         />
+
         <Footer />
       </div>
       {isAddItemModalOpen && (
         <AddItemModal
           name="create"
-          isOpen={isAddItemModalOpen}
           onCloseModal={closeModal}
           onAddItem={handleAddItemSubmit}
         />
+      )}
+      {isImagePreviewOpen && (
+        <ItemModal card={selectedCard} onCloseModal={closeModal} />
       )}
     </div>
   );

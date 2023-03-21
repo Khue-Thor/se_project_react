@@ -1,3 +1,4 @@
+@import url(./vendor/normalize.css);
 @import url(./components/App/App.css);
 @import url(./fonts/fonts.css);
 @import url(./components/Hedaer/Header.css);
@@ -5,12 +6,7 @@
 @import url(./components//WeatherCard/WeatherCard.css);
 @import url(./components/ItemCard/ItemCard.css);
 @import url(./components/ModalWithForm/ModalWithForm.css);
+@import url(./components/ModalWithForm/ModalWithForm.css);
+@import url(./components/ItemModal/ItemModal.css);
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+
