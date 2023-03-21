@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
-export const AddItemModal = ({ name, isOpen, onAddItem, onCloseModal }) => {
+export const AddItemModal = ({
+  name,
+  isOpen,
+  onAddItem,
+  onSubmit,
+  onCloseModal,
+}) => {
   const [itemName, setItemName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
@@ -11,7 +17,7 @@ export const AddItemModal = ({ name, isOpen, onAddItem, onCloseModal }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddItem(name, imageUrl);
+    onAddItem(itemName, imageUrl);
   }
   return (
     <ModalWithForm
@@ -32,9 +38,6 @@ export const AddItemModal = ({ name, isOpen, onAddItem, onCloseModal }) => {
           required
         />
         <span className="modal__input-error"></span>
-      </fieldset>
-
-      <fieldset className="modal__form-fieldset">
         <label className="modal__form-label">Image</label>
         <input
           className="modal__form-input"
@@ -47,9 +50,6 @@ export const AddItemModal = ({ name, isOpen, onAddItem, onCloseModal }) => {
           required
         />
         <span className="modal__input-error"></span>
-      </fieldset>
-
-      <fieldset className="modal__form-fieldset">
         <label className="modal__form-label">Select the weather type:</label>
         <div className="modal__form-input_type_radio">
           <div className="modal__form-choice">
