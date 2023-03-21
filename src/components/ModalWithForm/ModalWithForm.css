@@ -100,11 +100,6 @@ align-items: center;
   color: #000000;
 }
 
-.modal__weather-choice:visited {
-  color: #000000;
-}
-
-
 .modal__form-choice:last-of-type {
   margin: 0;
 }
