@@ -5,7 +5,7 @@ import "./Main.css";
 
 export function Main({ weatherData, cards, onCardClick }) {
   const temperature = weatherData.main?.temp;
-  const weatherType = () => {
+  const getWeatherType = () => {
     if (temperature >= 86) {
       return "hot";
     } else if (temperature >= 66 && temperature <= 85) {
@@ -22,14 +22,14 @@ export function Main({ weatherData, cards, onCardClick }) {
         <div className="main__info">
           <div className="main__description-container">
             <p className="main__description">
-              Today is {Math.round(temperature)}°F and it is {weatherType()} /
+              Today is {Math.round(temperature)}°F and it is {getWeatherType()} /
               You may want to wear:
             </p>
           </div>
         </div>
         <ul className="main__items">
           {cards
-            .filter((card) => card.weather === weatherType())
+            .filter((card) => card.weather === getWeatherType())
             .map((filteredCard) => (
               <ItemCard
                 key={filteredCard._id}
