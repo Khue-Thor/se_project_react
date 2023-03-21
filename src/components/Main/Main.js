@@ -15,6 +15,9 @@ export function Main({ weatherData, cards, onCardClick }) {
     }
   };
 
+  const weatherType = getWeatherType();
+  const filteredCards = cards.filter((card) => card.weather === weatherType);
+
   return (
     <main className="main">
       <WeatherCard weatherData={weatherData} />
@@ -22,21 +25,19 @@ export function Main({ weatherData, cards, onCardClick }) {
         <div className="main__info">
           <div className="main__description-container">
             <p className="main__description">
-              Today is {Math.round(temperature)}°F and it is {getWeatherType()} /
-              You may want to wear:
+              Today is {Math.round(temperature)}°F and it is {getWeatherType()}{" "}
+              / You may want to wear:
             </p>
           </div>
         </div>
         <ul className="main__items">
-          {cards
-            .filter((card) => card.weather === getWeatherType())
-            .map((filteredCard) => (
-              <ItemCard
-                key={filteredCard._id}
-                card={filteredCard}
-                onCardClick={onCardClick}
-              />
-            ))}
+          {filteredCards.map((filteredCard) => (
+            <ItemCard
+              key={filteredCard._id}
+              card={filteredCard}
+              onCardClick={onCardClick}
+            />
+          ))}
         </ul>
       </section>
     </main>
