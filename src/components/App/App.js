@@ -12,7 +12,6 @@ import { location, API_KEY } from "../../utils/constants";
 import { defaultClothingItems } from "../../utils/clothingItems";
 
 function App() {
-
   const [weatherData, setWeatherData] = useState({});
   const [selectedCard, setSelectedCard] = useState(null);
   const [clothingitems, setClothingItems] = useState([]);
@@ -68,15 +67,9 @@ function App() {
         <Footer />
       </div>
       {isAddItemModalOpen && (
-        <AddItemModal
-          name="create"
-          onCloseModal={closeModal}
-          onAddItem={handleAddItemSubmit}
-        />
+        <AddItemModal name="create" onCloseModal={closeModal} onAddItem={handleAddItemSubmit} />
       )}
-      {isImagePreviewOpen && (
-        <ItemModal card={selectedCard} onCloseModal={closeModal} />
-      )}
+      {isImagePreviewOpen && <ItemModal card={selectedCard} onCloseModal={closeModal} />}
     </div>
   );
 }
