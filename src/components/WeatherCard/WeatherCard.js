@@ -1,8 +1,7 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import "./WeatherCard.css";
 import sunPath from "../../images/sun.svg";
 import cloudPath from "../../images/cloudunion.svg";
-
 export function WeatherCard({ weatherData }) {
   const temperature = weatherData.main?.temp;
   return (
