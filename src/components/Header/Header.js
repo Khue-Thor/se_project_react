@@ -20,11 +20,12 @@ export function Header({ weatherData, handleAddClick }) {
         </div>
 
         <div className="header__info-container">
-          <button className="header__add-clothes" type="button" onClick={handleAddClick}>
-            + Add clothes
-          </button>
           <button className="header__login" type="button">
             Log in
+          </button>
+
+          <button className="header__add-clothes" type="button" onClick={handleAddClick}>
+            + Add clothes
           </button>
 
           <p className="header__username">{userName}</p>
