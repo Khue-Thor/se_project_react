@@ -30,28 +30,14 @@
 }
 
 .toggleswitch__f {
-  font-family: "Cabinet Grotesk", sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 17px;
-  letter-spacing: 0em;
-  text-align: center;
   margin-top: 33px;
   margin-right: 28px;
-  color: rgba(0, 0, 0, 0.5);
   z-index: 3;
 }
 
 .toggleswitch__c {
-  font-family: "Cabinet Grotesk", sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 17px;
-  letter-spacing: 0em;
-  text-align: center;
   margin-left: 31px;
   margin-top: -31px;
-  color: rgba(0, 0, 0, 0.5);
   z-index: 3;
 }
 
@@ -105,40 +91,4 @@
 
 .toggleswitch__input + .toggleswitch__slider:before {
   content: "F";
-}
-
-@media screen and (max-width: 880px) {
-  .toggleswitch__container {
-    margin-bottom: 32px;
-    width: 54px;
-    height: 24px;
-    box-sizing: border-box;
-    display: flex;
-    top: 64px;
-    left: -30px;
-  }
-  
-  .toggleswitch {
-    margin-bottom: 32px;
-    padding-left: 19px;
-    padding-right: 19px;
-    width: 173px;
-    height: 33px;
-    box-sizing: border-box;
-  }
-  
-  .toggleswitch__f {
-    display: flex;
-    flex-direction: row;
-    top: -7px;
-    position: relative;
-  }
-  
-  .toggleswitch__c {
-    display: flex;
-    flex-direction: row;
-    top: -7px;
-    position: relative;
-  }
-  
 }
