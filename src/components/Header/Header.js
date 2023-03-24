@@ -19,9 +19,9 @@ export function Header({ weatherData, handleAddClick }) {
             {currentDate}, {weatherData.name}
           </p>
         </div>
-
+       
         <div className="header__info-container">
-          <ToggleSwitch/>
+        <ToggleSwitch/>
           <button className="header__add-clothes" type="button" onClick={handleAddClick}>
             + Add clothes
           </button>
