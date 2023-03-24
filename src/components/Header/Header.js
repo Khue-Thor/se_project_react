@@ -4,6 +4,7 @@ import React from "react";
 import logoPath from "../../images/wtwr.svg";
 import avatarPath from "../../images/avatar.svg";
 import { currentDate } from "../../utils/constants";
+import { ToggleSwitch } from "../ToggleSwitch/ToggleSwitch";
 
 export function Header({ weatherData, handleAddClick }) {
   if (!weatherData) return null;
@@ -20,7 +21,7 @@ export function Header({ weatherData, handleAddClick }) {
         </div>
 
         <div className="header__info-container">
-
+          <ToggleSwitch />
           <button className="header__add-clothes" type="button" onClick={handleAddClick}>
             + Add clothes
           </button>
