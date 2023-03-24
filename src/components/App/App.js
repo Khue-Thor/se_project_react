@@ -32,6 +32,12 @@ function App() {
     setIsAddItemModalOpen(false);
   };
 
+  const handleToggleSwitchChange = () => {
+    currentTemperatureUnit === "F"
+      ? setCurrentTemperatureUnit("C")
+      : setCurrentTemperatureUnit("F");
+  };
+
   useEffect(() => {
     const closeByEscape = (e) => {
       if (e.key === "Escape") {
@@ -58,23 +64,22 @@ function App() {
 
   return (
     <div className="App">
-      <CurrentTemperatureUnitContext.Provider value={currentTemperatureUnit}>
-      <div className="App__content">
-        <Header weatherData={weatherData} handleAddClick={handleAddClick} />
-        <Main
-          weatherData={weatherData}
-          cards={defaultClothingItems}
-          onCardClick={handleCardClick}
-        />
+      <CurrentTemperatureUnitContext.Provider value={{currentTemperatureUnit, handleToggleSwitchChange}}>
+        <div className="App__content">
+          <Header weatherData={weatherData} handleAddClick={handleAddClick} />
+          <Main
+            weatherData={weatherData}
+            cards={defaultClothingItems}
+            onCardClick={handleCardClick}
+          />
 
-        <Footer />
-      </div>
-      {isAddItemModalOpen && (
-        <AddItemModal name="create" onCloseModal={closeModal} onAddItem={handleAddItemSubmit} />
-      )}
-      {isImagePreviewOpen && <ItemModal card={selectedCard} onCloseModal={closeModal} />}
+          <Footer />
+        </div>
+        {isAddItemModalOpen && (
+          <AddItemModal name="create" onCloseModal={closeModal} onAddItem={handleAddItemSubmit} />
+        )}
+        {isImagePreviewOpen && <ItemModal card={selectedCard} onCloseModal={closeModal} />}
       </CurrentTemperatureUnitContext.Provider>
-      
     </div>
   );
 }
