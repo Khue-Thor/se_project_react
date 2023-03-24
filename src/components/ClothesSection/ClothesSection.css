@@ -1,0 +1,38 @@
+.clothes__section {
+  width: 1010px;
+  display: flex;
+  align-items: center;
+}
+
+.clothes__section-info {
+  display: flex;
+  
+}
+
+.clothes__section-title {
+  font-family: 'Cabinet Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  color: #000;
+  margin: 0;
+}
+
+.clothes__add-button {
+  font-family: 'Cabinet Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.clothes__section-container {
+  max-width: 100%;
+  display: flex;
+}

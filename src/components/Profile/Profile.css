@@ -1,5 +1,5 @@
 .profile {
-  background-color: red;
   display: flex;
   justify-content: space-between;
+  padding: 0 40px 0 40px;
 }

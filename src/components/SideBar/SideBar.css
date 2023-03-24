@@ -1,5 +1,5 @@
 .sidebar {
-  max-width: 229px ;
+
 }
 
 .sidebar__container {
@@ -9,7 +9,8 @@
 }
 
 .sidebar__avatar {
-
+  width: 56px;
+  height: 56px;
 }
 
 .sidebar__username {
@@ -18,4 +19,7 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 25px;
+  color: #000;
+  margin: 0;
+  
 }
