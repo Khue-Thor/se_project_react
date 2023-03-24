@@ -71,7 +71,7 @@
   margin: auto;
   background-color: #000;
   transition: 0.2s;
-  border-radius: 20px;
+  border-radius: 50%;
 }
 
 .toggleswitch__input:checked + .toggleswitch {
