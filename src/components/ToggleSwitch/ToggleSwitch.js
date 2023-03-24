@@ -19,7 +19,9 @@ export function ToggleSwitch() {
         // onClick={handleToggleSwitchChange}
         />
         <span className="toggleswitch__slider"></span>
+
       </label>
+    
     </div>
   )
 }
