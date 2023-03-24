@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: space-around;
   cursor: pointer;
+  margin: 0 20px 0 0;
 }
 
 .toggleswitch__container:hover {
