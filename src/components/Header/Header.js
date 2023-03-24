@@ -1,6 +1,7 @@
 import "./Header.css";
 
 import React from "react";
+import { Link } from "react-router-dom";
 import logoPath from "../../images/wtwr.svg";
 import avatarPath from "../../images/avatar.svg";
 import { currentDate } from "../../utils/constants";
@@ -14,7 +15,9 @@ export function Header({ weatherData, handleAddClick }) {
     <header className="header">
       <div className="header__container">
         <div className="header__logo-container">
-          <img className="header__logo" src={logoPath} />
+          <Link to={"/"}>
+            <img className="header__logo" src={logoPath} />
+          </Link>
           <p className="header__date-location">
             {currentDate}, {weatherData.name}
           </p>
@@ -27,7 +30,9 @@ export function Header({ weatherData, handleAddClick }) {
           </button>
 
           <p className="header__username">{userName}</p>
-          <img className="header__avatar" alt="avatar" src={avatarPath} />
+          <Link to={"/profile"}>
+            <img className="header__avatar" alt="avatar" src={avatarPath} />
+          </Link>
         </div>
       </div>
     </header>
