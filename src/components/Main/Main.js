@@ -2,9 +2,11 @@ import React from "react";
 import { WeatherCard } from "../WeatherCard/WeatherCard";
 import { ItemCard } from "../ItemCard/ItemCard";
 import "./Main.css";
+import { CurrentTemperatureUnitContext } from "../../context/ CurrentTemperatureUnitContext";
 
 export function Main({ weatherData, cards, onCardClick }) {
-  
+  const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
+
   const temperature = weatherData.main?.temp;
   const getWeatherType = () => {
     if (temperature >= 86) {
@@ -18,26 +20,27 @@ export function Main({ weatherData, cards, onCardClick }) {
 
   const weatherType = getWeatherType();
   const filteredCards = cards.filter((card) => card.weather === weatherType);
-
   return (
     <main className="main">
       <WeatherCard weatherData={weatherData} />
       <section className="main__clothes-container">
         <div className="main__info">
           <div className="main__description-container">
-            <p className="main__description">
-              Today is {Math.round(temperature)}°F and it is {getWeatherType()}{" "}
-              / You may want to wear:
-            </p>
+            {currentTemperatureUnit === "F" ? (
+              <p className="main__description">
+                Today is {Math.round(temperature)}°{currentTemperatureUnit} and it is {weatherType} / You may want to wear:
+              </p>
+            ) : (
+              <p className="main__description">
+                Today is {Math.round(((temperature - 32) * 5) / 9)}°{currentTemperatureUnit} and it is {weatherType} / You
+                may want to wear:
+              </p>
+            )}
           </div>
         </div>
         <ul className="main__items">
           {filteredCards.map((filteredCard) => (
-            <ItemCard
-              key={filteredCard._id}
-              card={filteredCard}
-              onCardClick={onCardClick}
-            />
+            <ItemCard key={filteredCard._id} card={filteredCard} onCardClick={onCardClick} />
           ))}
         </ul>
       </section>

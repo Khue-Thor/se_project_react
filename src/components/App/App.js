@@ -10,6 +10,7 @@ import { ItemModal } from "../ItemModal/ItemModal";
 import { api } from "../../utils/weatherApi";
 import { location, API_KEY } from "../../utils/constants";
 import { defaultClothingItems } from "../../utils/clothingItems";
+import { CurrentTemperatureUnitContext } from "../../context/ CurrentTemperatureUnitContext";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
@@ -17,6 +18,7 @@ function App() {
   const [clothingitems, setClothingItems] = useState([]);
   const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
@@ -28,6 +30,12 @@ function App() {
   const closeModal = () => {
     setIsImagePreviewOpen(false);
     setIsAddItemModalOpen(false);
+  };
+
+  const handleToggleSwitchChange = () => {
+    currentTemperatureUnit === "F"
+      ? setCurrentTemperatureUnit("C")
+      : setCurrentTemperatureUnit("F");
   };
 
   useEffect(() => {
@@ -56,20 +64,22 @@ function App() {
 
   return (
     <div className="App">
-      <div className="App__content">
-        <Header weatherData={weatherData} handleAddClick={handleAddClick} />
-        <Main
-          weatherData={weatherData}
-          cards={defaultClothingItems}
-          onCardClick={handleCardClick}
-        />
+      <CurrentTemperatureUnitContext.Provider value={{currentTemperatureUnit, handleToggleSwitchChange}}>
+        <div className="App__content">
+          <Header weatherData={weatherData} handleAddClick={handleAddClick} />
+          <Main
+            weatherData={weatherData}
+            cards={defaultClothingItems}
+            onCardClick={handleCardClick}
+          />
 
-        <Footer />
-      </div>
-      {isAddItemModalOpen && (
-        <AddItemModal name="create" onCloseModal={closeModal} onAddItem={handleAddItemSubmit} />
-      )}
-      {isImagePreviewOpen && <ItemModal card={selectedCard} onCloseModal={closeModal} />}
+          <Footer />
+        </div>
+        {isAddItemModalOpen && (
+          <AddItemModal name="create" onCloseModal={closeModal} onAddItem={handleAddItemSubmit} />
+        )}
+        {isImagePreviewOpen && <ItemModal card={selectedCard} onCloseModal={closeModal} />}
+      </CurrentTemperatureUnitContext.Provider>
     </div>
   );
 }
