@@ -14,7 +14,7 @@ import { weatherApi } from "../../utils/weatherApi";
 import { api } from "../../utils/api";
 import { location, API_KEY } from "../../utils/constants";
 import { defaultClothingItems } from "../../utils/clothingItems";
-import { CurrentTemperatureUnitContext } from "../../context/ CurrentTemperatureUnitContext";
+import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
