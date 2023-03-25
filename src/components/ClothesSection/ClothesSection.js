@@ -3,6 +3,7 @@ import { ItemCard } from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 
 export function ClothesSection({ cards, handleAddClick, onCardClick }) {
+
   return (
     <section className="clothes__section">
       <div className="clothes__section-info">
@@ -12,9 +13,13 @@ export function ClothesSection({ cards, handleAddClick, onCardClick }) {
         </button>
       </div>
       <ul className="clothes__section-items">
-        {cards.map((card) => {
-          <ItemCard key={card._id} card={card} onCardClick={onCardClick} />;
-        })}
+        {cards.map((card) => (
+            <ItemCard
+              key={card._id}
+              card={card}
+              onCardClick={onCardClick}
+            />
+          ))}
       </ul>
     </section>
   );

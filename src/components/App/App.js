@@ -103,7 +103,7 @@ function App() {
         )}
         {isImagePreviewOpen && <ItemModal card={selectedCard} onCloseModal={closeModal} onDeleteModal={openDeleteModal}/>}
         {deleteModalOpen && (
-          <DeleteConfirmationModal onClose={closeModal} handleDelete={handleCardDeleteSubmit}/>
+          <DeleteConfirmationModal onCloseModal={closeModal} handleDelete={handleCardDeleteSubmit}/>
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>
