@@ -10,7 +10,8 @@ import { Profile } from "../Profile/Profile";
 import { AddItemModal } from "../AddItemModal/AddItemModal";
 import { ItemModal } from "../ItemModal/ItemModal";
 import { DeleteConfirmationModal } from "../DeleteConfirmationModal/DeleteConfirmationModal";
-import { api } from "../../utils/weatherApi";
+import { weatherApi } from "../../utils/weatherApi";
+import { api } from "../../utils/api";
 import { location, API_KEY } from "../../utils/constants";
 import { defaultClothingItems } from "../../utils/clothingItems";
 import { CurrentTemperatureUnitContext } from "../../context/ CurrentTemperatureUnitContext";
@@ -60,10 +61,19 @@ function App() {
   }, []);
 
   useEffect(() => {
-    api
+    weatherApi
       .getWeatherData(location, API_KEY)
       .then((setweatherInfo) => {
         setWeatherData(setweatherInfo);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  useEffect(() => {
+    api
+      .getItems()
+      .then((clothing) => {
+        setClothingItems(clothing);
       })
       .catch((error) => console.error(error));
   }, []);
@@ -78,7 +88,14 @@ function App() {
 
   function handleAddItemSubmit(name, imageUrl, weather) {
     setIsLoading(true);
-    closeModal();
+    api
+      .addItem({ name, imageUrl, weather })
+      .then((item) => {
+        setClothingItems([item, ...clothingitems]);
+        closeModal();
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
   }
 
   return (
