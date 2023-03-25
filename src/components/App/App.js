@@ -78,14 +78,6 @@ function App() {
       .catch((error) => console.error(error));
   }, []);
 
-  function handleAddItemSubmit() {
-    closeModal();
-  }
-
-  function handleCardDeleteSubmit() {
-    closeModal();
-  }
-
   function handleAddItemSubmit(name, imageUrl, weather) {
     setIsLoading(true);
     api
@@ -96,6 +88,17 @@ function App() {
       })
       .catch((err) => console.error(err))
       .finally(() => setIsLoading(false));
+  }
+
+  function handleCardDeleteSubmit() {
+    api
+      .deleteItem(selectedCard.id)
+      .then(() => {
+        setClothingItems([...clothingitems.filter((item) => item.id !== selectedCard.id)]);
+        setSelectedCard({});
+        closeModal();
+      })
+      .catch((err) => console.error(err));
   }
 
   return (
@@ -139,6 +142,7 @@ function App() {
         {deleteModalOpen && (
           <DeleteConfirmationModal
             onCloseModal={closeModal}
+            onOpen={openDeleteModal}
             handleDelete={handleCardDeleteSubmit}
           />
         )}
