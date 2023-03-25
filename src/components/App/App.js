@@ -23,6 +23,7 @@ function App() {
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
@@ -75,6 +76,11 @@ function App() {
     closeModal();
   }
 
+  function handleAddItemSubmit(name, imageUrl, weather) {
+    setIsLoading(true);
+    closeModal();
+  }
+
   return (
     <div className="App">
       <CurrentTemperatureUnitContext.Provider
@@ -98,7 +104,13 @@ function App() {
           <Footer />
         </div>
         {isAddItemModalOpen && (
-          <AddItemModal name="create" onCloseModal={closeModal} onAddItem={handleAddItemSubmit} />
+          <AddItemModal
+            name="create"
+            isLoading={isLoading}
+            isOpen={isAddItemModalOpen}
+            onCloseModal={closeModal}
+            onAddItem={handleAddItemSubmit}
+          />
         )}
         {isImagePreviewOpen && (
           <ItemModal
