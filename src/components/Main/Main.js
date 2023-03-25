@@ -26,18 +26,14 @@ export function Main({ weatherData, cards, onCardClick }) {
         <div className="main__info">
           <div className="main__description-container">
             <p className="main__description">
-              Today is {Math.round(temperature)}°F and it is {getWeatherType()}{" "}
-              / You may want to wear:
+              Today is {Math.round(temperature)}°F and it is {getWeatherType()} / You may want to
+              wear:
             </p>
           </div>
         </div>
         <ul className="main__items">
           {filteredCards.map((filteredCard) => (
-            <ItemCard
-              key={filteredCard.id}
-              card={filteredCard}
-              onCardClick={onCardClick}
-            />
+            <ItemCard key={filteredCard.id} card={filteredCard} onCardClick={onCardClick} />
           ))}
         </ul>
       </section>

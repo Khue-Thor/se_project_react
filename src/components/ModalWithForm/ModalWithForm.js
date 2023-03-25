@@ -2,6 +2,7 @@ import React, { Children } from "react";
 import "./ModalWithForm.css";
 
 export function ModalWithForm({ title, name, buttonText, closeModal, onSubmit, children }) {
+  
   function handleSubmit(e) {
     e.preventDefault();
     onSubmit();

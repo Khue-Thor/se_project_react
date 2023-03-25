@@ -1,4 +1,5 @@
 export default class Api {
+  
   constructor({ baseUrl, apiKey }) {
     this._baseUrl = baseUrl;
     this._apiKey = apiKey;
