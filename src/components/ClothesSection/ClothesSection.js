@@ -1,6 +1,7 @@
 import React from "react";
 import { ItemCard } from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
+import { DeleteConfirmationModal } from "../DeleteConfirmationModal/DeleteConfirmationModal";
 
 export function ClothesSection({ cards, handleAddClick, onCardClick }) {
   return (
@@ -15,6 +16,7 @@ export function ClothesSection({ cards, handleAddClick, onCardClick }) {
         {cards.map((card) => {
           <ItemCard key={card._id} card={card} onCardClick={onCardClick} />;
         })}
+        <DeleteConfirmationModal/>
       </ul>
     </section>
   );

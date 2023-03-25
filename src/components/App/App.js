@@ -56,6 +56,7 @@ function App() {
       .getWeatherData(location, API_KEY)
       .then((setweatherInfo) => {
         setWeatherData(setweatherInfo);
+        setClothingItems(defaultClothingItems)
       })
       .catch((error) => console.error(error));
   }, []);
@@ -75,13 +76,13 @@ function App() {
             <Route exact path={"/"}>
               <Main
                 weatherData={weatherData}
-                cards={defaultClothingItems}
+                cards={clothingitems}
                 onCardClick={handleCardClick}
               />
             </Route>
             <Route path={"/profile"}>
               <Profile
-                clothes={defaultClothingItems}
+                clothes={clothingitems}
                 handleAddClick={handleAddClick}
                 onCardClick={handleCardClick}
               />
