@@ -35,4 +35,5 @@
 .clothes__section-items {
   max-width: 100%;
   display: flex;
+  flex-wrap: wrap;
 }
