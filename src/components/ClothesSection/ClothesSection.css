@@ -1,11 +1,14 @@
 .clothes__section {
   width: 1010px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  margin: 0 0 80px 0;
 }
 
 .clothes__section-info {
   display: flex;
+  margin: 16px 0 0 40px;
+  gap: 20px;
   
 }
 
@@ -36,4 +39,5 @@
   max-width: 100%;
   display: flex;
   flex-wrap: wrap;
+  gap:15.98px;
 }

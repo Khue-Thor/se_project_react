@@ -9,7 +9,9 @@ import { Footer } from "../Footer/Footer";
 import { Profile } from "../Profile/Profile";
 import { AddItemModal } from "../AddItemModal/AddItemModal";
 import { ItemModal } from "../ItemModal/ItemModal";
-import { api } from "../../utils/weatherApi";
+import { DeleteConfirmationModal } from "../DeleteConfirmationModal/DeleteConfirmationModal";
+import { weatherApi } from "../../utils/weatherApi";
+import { api } from "../../utils/api";
 import { location, API_KEY } from "../../utils/constants";
 import { defaultClothingItems } from "../../utils/clothingItems";
 import { CurrentTemperatureUnitContext } from "../../context/ CurrentTemperatureUnitContext";
@@ -17,10 +19,12 @@ import { CurrentTemperatureUnitContext } from "../../context/ CurrentTemperature
 function App() {
   const [weatherData, setWeatherData] = useState({});
   const [selectedCard, setSelectedCard] = useState(null);
-  const [clothingitems, setClothingItems] = useState([]);
+  const [clothingitems, setClothingItems] = useState(defaultClothingItems);
   const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
@@ -32,12 +36,17 @@ function App() {
   const closeModal = () => {
     setIsImagePreviewOpen(false);
     setIsAddItemModalOpen(false);
+    setDeleteModalOpen(false);
   };
 
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
       ? setCurrentTemperatureUnit("C")
       : setCurrentTemperatureUnit("F");
+  };
+
+  const openDeleteModal = () => {
+    setDeleteModalOpen(true);
   };
 
   useEffect(() => {
@@ -52,7 +61,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    api
+    weatherApi
       .getWeatherData(location, API_KEY)
       .then((setweatherInfo) => {
         setWeatherData(setweatherInfo);
@@ -60,8 +69,33 @@ function App() {
       .catch((error) => console.error(error));
   }, []);
 
+  useEffect(() => {
+    api
+      .getItems()
+      .then((clothing) => {
+        setClothingItems(clothing);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
   function handleAddItemSubmit() {
     closeModal();
+  }
+
+  function handleCardDeleteSubmit() {
+    closeModal();
+  }
+
+  function handleAddItemSubmit(name, imageUrl, weather) {
+    setIsLoading(true);
+    api
+      .addItem({ name, imageUrl, weather })
+      .then((item) => {
+        setClothingItems([item, ...clothingitems]);
+        closeModal();
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
   }
 
   return (
@@ -73,15 +107,11 @@ function App() {
           <Header weatherData={weatherData} handleAddClick={handleAddClick} />
           <Switch>
             <Route exact path={"/"}>
-              <Main
-                weatherData={weatherData}
-                cards={defaultClothingItems}
-                onCardClick={handleCardClick}
-              />
+              <Main weatherData={weatherData} cards={clothingitems} onCardClick={handleCardClick} />
             </Route>
             <Route path={"/profile"}>
               <Profile
-                clothes={defaultClothingItems}
+                cards={clothingitems}
                 handleAddClick={handleAddClick}
                 onCardClick={handleCardClick}
               />
@@ -91,9 +121,27 @@ function App() {
           <Footer />
         </div>
         {isAddItemModalOpen && (
-          <AddItemModal name="create" onCloseModal={closeModal} onAddItem={handleAddItemSubmit} />
+          <AddItemModal
+            name="create"
+            isLoading={isLoading}
+            isOpen={isAddItemModalOpen}
+            onCloseModal={closeModal}
+            onAddItem={handleAddItemSubmit}
+          />
         )}
-        {isImagePreviewOpen && <ItemModal card={selectedCard} onCloseModal={closeModal} />}
+        {isImagePreviewOpen && (
+          <ItemModal
+            card={selectedCard}
+            onCloseModal={closeModal}
+            onDeleteModal={openDeleteModal}
+          />
+        )}
+        {deleteModalOpen && (
+          <DeleteConfirmationModal
+            onCloseModal={closeModal}
+            handleDelete={handleCardDeleteSubmit}
+          />
+        )}
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );
