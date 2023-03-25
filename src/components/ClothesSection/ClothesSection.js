@@ -11,11 +11,11 @@ export function ClothesSection({ cards, handleAddClick, onCardClick }) {
           + Add new
         </button>
       </div>
-     <ul className="clothes__section-container">
+      <ul className="clothes__section-items">
         {cards.map((card) => {
-          <ItemCard key={card._id} card={card} onCardClick={onCardClick}/>
+          <ItemCard key={card._id} card={card} onCardClick={onCardClick} />;
         })}
-     </ul>
+      </ul>
     </section>
   );
 }
