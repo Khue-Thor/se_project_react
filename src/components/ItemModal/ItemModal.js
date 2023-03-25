@@ -1,8 +1,7 @@
 import React from "react";
 import "./ItemModal.css";
 
-export function ItemModal({ card, onCloseModal }) {
-
+export function ItemModal({ card, onCloseModal, onDelete }) {
   return (
     <div className={`modal__preview`}>
       <div className="modal__preview-container">
@@ -14,7 +13,9 @@ export function ItemModal({ card, onCloseModal }) {
               <p className="modal__preview-title">{card?.name}</p>
               <p className="modal__preview-description">Weather: {card?.weather}</p>
             </div>
-            <button className="modal__delete-button">Delete item</button>
+            <button className="modal__delete-button" onClick={onDelete} type="button">
+              Delete item
+            </button>
           </div>
         </div>
       </div>
