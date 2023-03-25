@@ -13,7 +13,7 @@ export function ClothesSection({ cards, handleAddClick, onCardClick }) {
       </div>
       <ul className="clothes__section-items">
         {cards.map((card) => (
-          <ItemCard key={card._id} card={card} onCardClick={onCardClick} />
+          <ItemCard key={card.id} card={card} onCardClick={onCardClick} />
         ))}
       </ul>
     </section>

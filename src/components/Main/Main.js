@@ -34,7 +34,7 @@ export function Main({ weatherData, cards, onCardClick }) {
         <ul className="main__items">
           {filteredCards.map((filteredCard) => (
             <ItemCard
-              key={filteredCard._id}
+              key={filteredCard.id}
               card={filteredCard}
               onCardClick={onCardClick}
             />
