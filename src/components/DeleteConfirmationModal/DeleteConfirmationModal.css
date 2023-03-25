@@ -6,13 +6,28 @@
   right: 0;
   background: rgb(0, 0, 0, 0.5);
   transition: visibility 0s linear 0.3s, opacity 0.3s linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal__confirm-container {
   width: 670px;
+  height: 280px;
   background: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 20px;
+}
+
+.modal__close {
+  width: 14px;
+  height: 14px;
+  background: url("../../images/close-icon.svg") center no-repeat;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  top:23px;
+  right: -307px;
 }
 
 .modal__messages-container {
