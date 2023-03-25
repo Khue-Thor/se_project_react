@@ -5,7 +5,7 @@ export function DeleteConfirmationModal({onClose, handleDelete}) {
   return (
     <div className="modal__confirm">
       <div className="modal__confirm-container">
-      <button className='modal__close' onClick={onClose} />
+      <button className='modal__confirm-close' onClick={onClose} />
         <div className="modal__messages-container">
           <p className="modal__message">Are you sure you want to delete this item?</p>
           <p className="modal__message">This action is irreversible.</p>

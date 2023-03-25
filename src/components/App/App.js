@@ -18,7 +18,7 @@ import { CurrentTemperatureUnitContext } from "../../context/ CurrentTemperature
 function App() {
   const [weatherData, setWeatherData] = useState({});
   const [selectedCard, setSelectedCard] = useState(null);
-  const [clothingitems, setClothingItems] = useState([]);
+  const [clothingitems, setClothingItems] = useState(defaultClothingItems);
   const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -63,7 +63,6 @@ function App() {
       .getWeatherData(location, API_KEY)
       .then((setweatherInfo) => {
         setWeatherData(setweatherInfo);
-        setClothingItems(defaultClothingItems);
       })
       .catch((error) => console.error(error));
   }, []);
@@ -90,7 +89,7 @@ function App() {
             </Route>
             <Route path={"/profile"}>
               <Profile
-                clothes={clothingitems}
+                cards={clothingitems}
                 handleAddClick={handleAddClick}
                 onCardClick={handleCardClick}
               />

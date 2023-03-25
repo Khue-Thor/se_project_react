@@ -19,7 +19,7 @@
   border-radius: 20px;
 }
 
-.modal__close {
+.modal__confirm-close {
   width: 14px;
   height: 14px;
   background: url("../../images/close-icon.svg") center no-repeat;
