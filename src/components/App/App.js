@@ -81,7 +81,7 @@ function App() {
             </Route>
             <Route path={"/profile"}>
               <Profile
-                clothes={defaultClothingItems}
+                cards={defaultClothingItems}
                 handAddClick={handleAddClick}
                 onCardClick={handleCardClick}
               />
