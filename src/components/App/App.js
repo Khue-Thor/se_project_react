@@ -34,7 +34,7 @@ function App() {
   const closeModal = () => {
     setIsImagePreviewOpen(false);
     setIsAddItemModalOpen(false);
-    setDeleteModalOpen(false)
+    setDeleteModalOpen(false);
   };
 
   const handleToggleSwitchChange = () => {
@@ -75,7 +75,6 @@ function App() {
     closeModal();
   }
 
-
   return (
     <div className="App">
       <CurrentTemperatureUnitContext.Provider
@@ -101,9 +100,18 @@ function App() {
         {isAddItemModalOpen && (
           <AddItemModal name="create" onCloseModal={closeModal} onAddItem={handleAddItemSubmit} />
         )}
-        {isImagePreviewOpen && <ItemModal card={selectedCard} onCloseModal={closeModal} onDeleteModal={openDeleteModal}/>}
+        {isImagePreviewOpen && (
+          <ItemModal
+            card={selectedCard}
+            onCloseModal={closeModal}
+            onDeleteModal={openDeleteModal}
+          />
+        )}
         {deleteModalOpen && (
-          <DeleteConfirmationModal onCloseModal={closeModal} handleDelete={handleCardDeleteSubmit}/>
+          <DeleteConfirmationModal
+            onCloseModal={closeModal}
+            handleDelete={handleCardDeleteSubmit}
+          />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>
