@@ -2,7 +2,6 @@ import React from "react";
 import { WeatherCard } from "../WeatherCard/WeatherCard";
 import { ItemCard } from "../ItemCard/ItemCard";
 import "./Main.css";
-import { ClothesSection } from "../ClothesSection/ClothesSection";
 
 export function Main({ weatherData, cards, onCardClick }) {
   
