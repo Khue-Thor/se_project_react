@@ -16,17 +16,6 @@ export default class Api {
     );
     return this._handleResponse(response);
   };
-
-  // filterDataFromWeatherAPI = async (data) => {
-  //   if (!data) {
-  //     return null;
-  //   }
-
-  //   const weather = {};
-  //   weather.city = data.location.name;
-  //   weather.temperature = data.current.tem_f;
-  //   return weather;
-  // };
 }
 
 export const weatherApi = new Api({
