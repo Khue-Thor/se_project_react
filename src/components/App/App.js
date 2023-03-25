@@ -91,7 +91,14 @@ function App() {
   }
 
   function handleCardDeleteSubmit() {
-    closeModal();
+    api
+      .deleteItem(selectedCard.id)
+      .then(() => {
+        setClothingItems([...clothingitems.filter((item) => item.id !== selectedCard.id)]);
+        setSelectedCard({});
+        closeModal();
+      })
+      .catch((err) => console.error(err));
   }
 
   return (
@@ -135,6 +142,7 @@ function App() {
         {deleteModalOpen && (
           <DeleteConfirmationModal
             onCloseModal={closeModal}
+            onOpen={openDeleteModal}
             handleDelete={handleCardDeleteSubmit}
           />
         )}

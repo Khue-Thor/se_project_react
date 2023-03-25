@@ -12,7 +12,7 @@
 }
 
 .modal__preview-container {
-  max-width: 498px;
+  width: 498px;
   background: #FFFFFF;
   border-radius: 16px;
 }
@@ -39,7 +39,7 @@
 
 .modal__preview-image {
   max-width: 498px;
-  max-height: 498px;
+  min-height: 498px;
   object-fit: cover;
   border-radius: 5px;
   border-top-left-radius: 16px;
