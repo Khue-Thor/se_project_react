@@ -7,7 +7,7 @@ export function ItemModal({ card, onCloseModal, onDeleteModal}) {
       <div className="modal__preview-container">
         <button className="modal__preview-close" type="button" onClick={onCloseModal} />
         <div className="modal__preview-info">
-          <img className="modal__preview-image" src={card?.link} alt={card?.name} />
+          <img className="modal__preview-image" src={card?.imageUrl} alt={card?.name} />
           <div className="modal__description-container">
             <div>
               <p className="modal__preview-title">{card?.name}</p>
