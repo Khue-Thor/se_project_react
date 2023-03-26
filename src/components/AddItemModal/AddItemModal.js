@@ -24,7 +24,7 @@ export const AddItemModal = ({ name, isOpen, isLoading, onAddItem, onCloseModal 
     setWeather(e.target.value);
   }
 
-  function handleSubmit(e) {
+  function handleSubmit() {
     onAddItem(itemName, imageUrl, weather);
   }
 
