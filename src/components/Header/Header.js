@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logoPath from "../../images/wtwr.svg";
 import avatarPath from "../../images/avatar.svg";
-import { currentDate } from "../../utils/constants";
+import { currentDate, date } from "../../utils/constants";
 import { ToggleSwitch } from "../ToggleSwitch/ToggleSwitch";
 
 export function Header({ weatherData, handleAddClick }) {
@@ -19,7 +19,7 @@ export function Header({ weatherData, handleAddClick }) {
             <img className="header__logo" src={logoPath} />
           </Link>
           <p className="header__date-location">
-            {currentDate}, {weatherData.name}
+            {currentDate} {date}, {weatherData.name}
           </p>
         </div>
 
