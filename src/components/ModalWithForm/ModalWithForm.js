@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 import "./ModalWithForm.css";
 
 export function ModalWithForm({ title, name, buttonText, closeModal, onSubmit, children }) {
@@ -9,7 +9,7 @@ export function ModalWithForm({ title, name, buttonText, closeModal, onSubmit, c
   }
   return (
     <div className="modal">
-      <div className="modal__container">
+      <div className="modal__container modal__content">
         <div className="modal__form-header">
           <h2 className="modal__form-title">{title}</h2>
           <button className="modal__close" type="button" onClick={closeModal} />

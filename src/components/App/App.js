@@ -61,6 +61,24 @@ function App() {
   }, []);
 
   useEffect(() => {
+    function handleOverLayClose(e) {
+      if (
+        { isImagePreviewOpen, isAddItemModalOpen, setDeleteModalOpen } &&
+        !e.target.closest(".modal__content")
+      ) {
+        setIsImagePreviewOpen(false);
+        setIsAddItemModalOpen(false);
+        setDeleteModalOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleOverLayClose);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOverLayClose);
+    };
+  });
+
+  useEffect(() => {
     weatherApi
       .getWeatherData(location, API_KEY)
       .then((setweatherInfo) => {

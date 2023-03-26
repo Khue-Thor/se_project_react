@@ -4,7 +4,7 @@ import "./ItemModal.css";
 export function ItemModal({ card, onCloseModal, onDeleteModal}) {
   return (
     <div className={`modal__preview`}>
-      <div className="modal__preview-container">
+      <div className="modal__preview-container modal__content">
         <button className="modal__preview-close" type="button" onClick={onCloseModal} />
         <div className="modal__preview-info">
           <img className="modal__preview-image" src={card?.imageUrl} alt={card?.name} />
