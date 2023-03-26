@@ -16,15 +16,9 @@ export function ModalWithForm({ title, name, buttonText, closeModal, onSubmit, c
         </div>
         <form className="modal__form" onSubmit={handleSubmit}>
           {children}
-         {buttonText === "Next" ? (
-           <button type="submit" className="modal__form-save">
-           {buttonText}
-         </button>
-         ): (
           <button type="submit" className="modal__form-save">
-          {buttonText}
-        </button>
-         )}
+            {buttonText}
+          </button>
         </form>
       </div>
     </div>
