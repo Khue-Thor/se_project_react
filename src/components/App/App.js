@@ -61,7 +61,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    function handleOverLayClose(e) {
+    function handleOverlayClose(e) {
       if (
         { isImagePreviewOpen, isAddItemModalOpen, setDeleteModalOpen } &&
         !e.target.closest(".modal__content")
@@ -71,10 +71,10 @@ function App() {
         setDeleteModalOpen(false);
       }
     }
-    document.addEventListener("mousedown", handleOverLayClose);
+    document.addEventListener("mousedown", handleOverlayClose);
 
     return () => {
-      document.removeEventListener("mousedown", handleOverLayClose);
+      document.removeEventListener("mousedown", handleOverlayClose);
     };
   });
 
