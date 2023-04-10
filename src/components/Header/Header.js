@@ -19,7 +19,7 @@ export function Header({ weatherData, handleAddClick }) {
             <img className="header__logo" src={logoPath} />
           </Link>
           <p className="header__date-location">
-            {currentDate} {date}, {weatherData.name}
+            {currentDate}, {weatherData.name}
           </p>
         </div>
 
