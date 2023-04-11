@@ -1,5 +1,7 @@
 .sidebar {
-
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .sidebar__container {
@@ -22,4 +24,45 @@
   color: #000;
   margin: 0;
   
+}
+
+.sidebar__buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar__edit-profile {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  text-align: left;
+}
+
+.sidebar__edit-profile:hover {
+  cursor: pointer;
+}
+
+
+.sidebar__log-out {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  text-align: left;
+}
+
+.sidebar__log-out:hover {
+  cursor: pointer;
 }

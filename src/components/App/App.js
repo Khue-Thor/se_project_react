@@ -161,6 +161,7 @@ function App() {
           {isImagePreviewOpen && (
             <ItemModal
               card={selectedCard}
+              currentUser={currentUser}
               onCloseModal={closeModal}
               onDeleteModal={openDeleteModal}
             />
