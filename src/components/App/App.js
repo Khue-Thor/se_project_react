@@ -27,6 +27,7 @@ function App() {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
@@ -128,7 +129,7 @@ function App() {
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
           <div className="App__content">
-            <Header weatherData={weatherData} handleAddClick={handleAddClick} />
+            <Header isLoggedIn={isLoggedIn} weatherData={weatherData} handleAddClick={handleAddClick} />
             <Switch>
               <Route exact path={"/"}>
                 <Main
