@@ -65,6 +65,36 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
+  async function handleRegistration({ name, avatar, email, password }) {
+    setIsLoading(true);
+    try {
+      const res = await auth.register(name, avatar, email, password);
+      setIsLoggedIn(true);
+      setCurrentUser({ res });
+      closeModal();
+    } catch (err) {
+      return console.error(err);
+    } finally {
+      return setIsLoading(false);
+    }
+  }
+
+  async function handleUserLogin(email, password) {
+    setIsLoading(true);
+    try {
+      const res = await auth.login(email, password);
+      if (res) {
+        setIsLoggedIn(true);
+        setCurrentUser({ user: res.token });
+        closeModal();
+      }
+    } catch (err) {
+      return console.err(err);
+    } finally {
+      return setIsLoading(false);
+    }
+  }
+
   const openDeleteModal = () => {
     setDeleteModalOpen(true);
   };
@@ -144,49 +174,18 @@ function App() {
     history.push("/");
   }
 
-  async function handleRegistration({ name, avatar, email, password }) {
-    setIsLoading(true);
-    try {
-      const res = await auth.register(name, avatar, email, password);
+  useEffect(() => {
+
+    if (localStorage.getItem("token")) {
+      const token = localStorage.getItem("token");
       setIsLoggedIn(true);
-      setCurrentUser({ res });
-      closeModal();
-    } catch (err) {
-      return console.error(err);
-    } finally {
-      return setIsLoading(false);
+      auth.getUser(token)
+      .then((res) => {
+        setCurrentUser(res.data);
+      })
+      .catch((err) => console.error(err.message));
     }
-  }
-
-  async function handleUserLogin(email, password) {
-    setIsLoading(true);
-    try {
-      const res = await auth.login(email, password);
-      if (res) {
-        setIsLoggedIn(true);
-        setCurrentUser({ user: res.token });
-        closeModal();
-      }
-    } catch (err) {
-      return console.err(err);
-    } finally {
-      return setIsLoading(false);
-    }
-  }
-
-  // useEffect(() => {
-
-  //   if (localStorage.getItem("token")) {
-  //     const token = localStorage.getItem("token");
-  //     console.log(token)
-  //     setIsLoggedIn(true);
-  //     auth.getUser(token)
-  //     .then((res) => {
-  //       setCurrentUser(res.data);
-  //     })
-  //     .catch((err) => console.error(err.message));
-  //   }
-  // }, [isLoggedIn])
+  }, [isLoggedIn])
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

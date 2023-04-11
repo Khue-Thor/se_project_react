@@ -77,6 +77,10 @@
   margin: 0;
 }
 
+.header__user-info {
+  display: flex;
+}
+
 
 .header__add-clothes {
   height: 24px;

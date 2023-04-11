@@ -28,7 +28,6 @@ export function RegisterModal({ form, isOpen, isLoading, onCloseModal, onRegistr
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
     onRegistration({ name, avatar, email, password });
     history.push("/profile");
   }

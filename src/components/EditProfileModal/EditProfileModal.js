@@ -12,7 +12,6 @@ export function EditProfileModal({ isOpen, isLoading, currentUser, onEditProfile
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
     onEditProfile(name, avatar);
     history.push("/profile");
   }

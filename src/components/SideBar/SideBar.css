@@ -13,6 +13,8 @@
 .sidebar__avatar {
   width: 56px;
   height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .sidebar__username {

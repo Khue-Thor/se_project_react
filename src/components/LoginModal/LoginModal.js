@@ -17,7 +17,6 @@ export function LoginModal({ name, isOpen, isLoading, onCloseModal, onLogin, onT
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
     onLogin(email, password);
     history.push("/profile");
   }
