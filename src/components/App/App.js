@@ -17,6 +17,7 @@ import { defaultClothingItems } from "../../utils/clothingItems";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import { EditProfileModal } from "../EditProfileModal/EditProfileModal";
+import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
@@ -156,7 +157,7 @@ function App() {
                   onCardClick={handleCardClick}
                 />
               </Route>
-              <Route path={"/profile"}>
+              <ProtectedRoute path="/profile" loggedIn={isLoggedIn} currentUser={currentUser}>
                 <Profile
                   cards={clothingitems}
                   isLoggedIn={isLoggedIn}
@@ -165,7 +166,7 @@ function App() {
                   onChangeProfile={handleChangeProfile}
                   onLogOut={handleLogOut}
                 />
-              </Route>
+              </ProtectedRoute>
             </Switch>
 
             <Footer />
