@@ -41,7 +41,7 @@ export function Header({ isLoggedIn, weatherData, handleAddClick, onLoginClick, 
           )}
 
           {isLoggedIn ? (
-            <di className="header__user-info">
+            <div className="header__user-info">
               <button className="header__add-clothes" type="button" onClick={handleAddClick}>
                 + Add clothes
               </button>
@@ -50,7 +50,7 @@ export function Header({ isLoggedIn, weatherData, handleAddClick, onLoginClick, 
               <Link to={"/profile"}>
                 <img className="header__avatar" alt="avatar" src={currentUser.avatar} />
               </Link>
-            </di>
+            </div>
           ) : (
             <div></div>
           )}

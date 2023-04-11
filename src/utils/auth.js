@@ -1,5 +1,3 @@
-import { date } from "./constants";
-
 export const BASE__URL = "http://localhost:3001";
 
 async function handleRequest(url, options) {
@@ -31,9 +29,21 @@ export const login = async (email, password) => {
     },
     body: JSON.stringify({ email, password }),
   }).then((res) => {
-    if (data) {
-      localStorage.setItem("token", data.token);
-      return date;
+    if (res) {
+      localStorage.setItem("token", res.token);
+      return res;
     }
   })
 };
+
+export const getUser = async (token) => {
+  return handleRequest(`${BASE__URL}/user/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem('token')}`,
+    }
+  }).then((data) => {
+    return data;
+  });
+}

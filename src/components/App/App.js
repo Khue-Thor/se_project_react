@@ -12,12 +12,14 @@ import { ItemModal } from "../ItemModal/ItemModal";
 import { DeleteConfirmationModal } from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import { weatherApi } from "../../utils/weatherApi";
 import { api } from "../../utils/api";
+import * as auth from "../../utils/auth";
 import { location, API_KEY } from "../../utils/constants";
 import { defaultClothingItems } from "../../utils/clothingItems";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import { EditProfileModal } from "../EditProfileModal/EditProfileModal";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
+import { RegisterModal } from "../RegisterModal/RegisterModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
@@ -27,6 +29,7 @@ function App() {
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
@@ -38,6 +41,8 @@ function App() {
     setIsImagePreviewOpen(true);
   };
 
+  const handleRegisterClick = () => setIsRegisterModalOpen(true);
+
   const handleAddClick = () => setIsAddItemModalOpen(true);
 
   const handleChangeProfile = () => setIsProfileModalOpen(true);
@@ -47,6 +52,7 @@ function App() {
     setIsAddItemModalOpen(false);
     setDeleteModalOpen(false);
     setIsProfileModalOpen(false);
+    setIsRegisterModalOpen(false);
   };
 
   const handleToggleSwitchChange = () => {
@@ -76,10 +82,7 @@ function App() {
         { isImagePreviewOpen, isAddItemModalOpen, setDeleteModalOpen } &&
         !e.target.closest(".modal__content")
       ) {
-        setIsImagePreviewOpen(false);
-        setIsAddItemModalOpen(false);
-        setDeleteModalOpen(false);
-        setIsProfileModalOpen(false);
+       closeModal();
       }
     }
     document.addEventListener("mousedown", handleOverlayClose);
@@ -137,6 +140,49 @@ function App() {
     history.push("/");
   }
 
+  async function handleRegistration({ name, avatar, email, password }) {
+    setIsLoading(true);
+    try {
+      const res = await auth.register(name, avatar, email, password);
+      setIsLoggedIn(true);
+      setCurrentUser({ res });
+      closeModal();
+    } catch (err) {
+      return console.error(err);
+    } finally {
+      return setIsLoading(false);
+    }
+  }
+  // async function handleUserLogin(email, password) {
+  //   setIsLoading(true);
+  //   try {
+  //     const res = await auth.login(email, password);
+  //     if (res) {
+  //       setIsLoggedIn(true);
+  //       setCurrentUser({ user: res.token});
+  //       closeModal();
+  //     }
+  //   } catch (err) {
+  //     return console.err(err);
+  //   } finally {
+  //     return setIsLoading(false);
+  //   }
+  // }
+
+  // useEffect(() => {
+    
+  //   if (localStorage.getItem("token")) {
+  //     const token = localStorage.getItem("token");
+  //     console.log(token)
+  //     setIsLoggedIn(true);
+  //     auth.getUser(token)
+  //     .then((res) => {
+  //       setCurrentUser(res.data);
+  //     })
+  //     .catch((err) => console.error(err.message));
+  //   }
+  // }, [isLoggedIn])
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
@@ -148,6 +194,7 @@ function App() {
               isLoggedIn={isLoggedIn}
               weatherData={weatherData}
               handleAddClick={handleAddClick}
+              onRegisterClick={handleRegisterClick}
             />
             <Switch>
               <Route exact path={"/"}>
@@ -201,6 +248,15 @@ function App() {
               currentUser={currentUser}
               isOpen={isProfileModalOpen}
               onCloseModal={closeModal}
+            />
+          )}
+          {isRegisterModalOpen && (
+            <RegisterModal
+              form="register"
+              isOpen={isRegisterModalOpen}
+              isLoading={isLoading}
+              onCloseModal={closeModal}
+              onRegistration={handleRegistration}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
