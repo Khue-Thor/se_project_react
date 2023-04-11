@@ -8,7 +8,7 @@ import { CurrentUserContext } from "../../context/CurrentUserContext";
 import "./Header.css";
 
 export function Header({ isLoggedIn, weatherData, handleAddClick, onLoginClick, onRegisterClick }) {
-  
+
   const currentUser = useContext(CurrentUserContext);
   if (!weatherData) return null;
 
@@ -31,10 +31,10 @@ export function Header({ isLoggedIn, weatherData, handleAddClick, onLoginClick, 
             <div></div>
           ) : (
             <>
-              <button className="header__register" type="button" onClick={onRegisterClick}>
+              <button className="header__register-btn" type="button" onClick={onRegisterClick}>
                 Sign Up
               </button>
-              <button className="header__login" type="button" onClick={onLoginClick}>
+              <button className="header__login-btn" type="button" onClick={onLoginClick}>
                 Log in
               </button>
             </>
