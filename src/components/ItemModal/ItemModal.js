@@ -1,7 +1,12 @@
 import React from "react";
 import "./ItemModal.css";
 
-export function ItemModal({ card, onCloseModal, onDeleteModal}) {
+export function ItemModal({ card, currentUser, onCloseModal, onDeleteModal}) {
+  const isOwn = card.owner._id === currentUser._id;
+
+  const itemDeleteButtonClassName = (
+    `modal__delete-button ${isOwn ? 'modal__delete-button' : 'modal__delete-button_hidden'}`
+  );
   return (
     <div className={`modal__preview`}>
       <div className="modal__preview-container modal__content">

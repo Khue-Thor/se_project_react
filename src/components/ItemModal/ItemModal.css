@@ -83,3 +83,7 @@
   color: red;
   cursor: pointer;
 }
+
+.modal__delete-button_hidden {
+  display: none;
+}
