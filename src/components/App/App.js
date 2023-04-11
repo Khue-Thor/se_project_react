@@ -15,6 +15,7 @@ import { api } from "../../utils/api";
 import { location, API_KEY } from "../../utils/constants";
 import { defaultClothingItems } from "../../utils/clothingItems";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
@@ -25,6 +26,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
@@ -120,52 +122,58 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-      >
-        <div className="App__content">
-          <Header weatherData={weatherData} handleAddClick={handleAddClick} />
-          <Switch>
-            <Route exact path={"/"}>
-              <Main weatherData={weatherData} cards={clothingitems} onCardClick={handleCardClick} />
-            </Route>
-            <Route path={"/profile"}>
-              <Profile
-                cards={clothingitems}
-                handleAddClick={handleAddClick}
-                onCardClick={handleCardClick}
-              />
-            </Route>
-          </Switch>
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="App">
+        <CurrentTemperatureUnitContext.Provider
+          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+        >
+          <div className="App__content">
+            <Header weatherData={weatherData} handleAddClick={handleAddClick} />
+            <Switch>
+              <Route exact path={"/"}>
+                <Main
+                  weatherData={weatherData}
+                  cards={clothingitems}
+                  onCardClick={handleCardClick}
+                />
+              </Route>
+              <Route path={"/profile"}>
+                <Profile
+                  cards={clothingitems}
+                  handleAddClick={handleAddClick}
+                  onCardClick={handleCardClick}
+                />
+              </Route>
+            </Switch>
 
-          <Footer />
-        </div>
-        {isAddItemModalOpen && (
-          <AddItemModal
-            name="create"
-            isLoading={isLoading}
-            isOpen={isAddItemModalOpen}
-            onCloseModal={closeModal}
-            onAddItem={handleAddItemSubmit}
-          />
-        )}
-        {isImagePreviewOpen && (
-          <ItemModal
-            card={selectedCard}
-            onCloseModal={closeModal}
-            onDeleteModal={openDeleteModal}
-          />
-        )}
-        {deleteModalOpen && (
-          <DeleteConfirmationModal
-            onCloseModal={closeModal}
-            onOpen={openDeleteModal}
-            handleDelete={handleCardDeleteSubmit}
-          />
-        )}
-      </CurrentTemperatureUnitContext.Provider>
-    </div>
+            <Footer />
+          </div>
+          {isAddItemModalOpen && (
+            <AddItemModal
+              name="create"
+              isLoading={isLoading}
+              isOpen={isAddItemModalOpen}
+              onCloseModal={closeModal}
+              onAddItem={handleAddItemSubmit}
+            />
+          )}
+          {isImagePreviewOpen && (
+            <ItemModal
+              card={selectedCard}
+              onCloseModal={closeModal}
+              onDeleteModal={openDeleteModal}
+            />
+          )}
+          {deleteModalOpen && (
+            <DeleteConfirmationModal
+              onCloseModal={closeModal}
+              onOpen={openDeleteModal}
+              handleDelete={handleCardDeleteSubmit}
+            />
+          )}
+        </CurrentTemperatureUnitContext.Provider>
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 
