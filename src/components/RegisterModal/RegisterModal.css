@@ -1,0 +1,19 @@
+.modal__auth-text {
+  position: relative;
+  left: -108px;
+  top: -10px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.5);
+  
+}
+
+.modal__form-link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.5);
+  padding: 0;
+  margin: 0 0 0 3px;
+}

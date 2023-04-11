@@ -2,7 +2,7 @@ import React from "react";
 import { ItemCard } from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 
-export function ClothesSection({ cards, handleAddClick, onCardClick }) {
+export function ClothesSection({ cards, isLoggedIn, handleAddClick, onCardClick }) {
   
   return (
     <section className="clothes__section">
@@ -14,7 +14,7 @@ export function ClothesSection({ cards, handleAddClick, onCardClick }) {
       </div>
       <ul className="clothes__section-items">
         {cards.map((card) => (
-          <ItemCard key={card.id} card={card} onCardClick={onCardClick} />
+          <ItemCard isLoggedIn={isLoggedIn} key={card._id} card={card} onCardClick={onCardClick} />
         ))}
       </ul>
     </section>

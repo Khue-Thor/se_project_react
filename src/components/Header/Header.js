@@ -1,15 +1,16 @@
-import "./Header.css";
-
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logoPath from "../../images/wtwr.svg";
 import avatarPath from "../../images/avatar.svg";
-import { currentDate, date } from "../../utils/constants";
+import { currentDate } from "../../utils/constants";
 import { ToggleSwitch } from "../ToggleSwitch/ToggleSwitch";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
+import "./Header.css";
 
-export function Header({ weatherData, handleAddClick }) {
+export function Header({ isLoggedIn, weatherData, handleAddClick, onLoginClick, onRegisterClick }) {
+
+  const currentUser = useContext(CurrentUserContext);
   if (!weatherData) return null;
-  const userName = "Terrance Tegegne";
 
   return (
     <header className="header">
@@ -25,14 +26,34 @@ export function Header({ weatherData, handleAddClick }) {
 
         <div className="header__info-container">
           <ToggleSwitch />
-          <button className="header__add-clothes" type="button" onClick={handleAddClick}>
-            + Add clothes
-          </button>
 
-          <p className="header__username">{userName}</p>
-          <Link to={"/profile"}>
-            <img className="header__avatar" alt="avatar" src={avatarPath} />
-          </Link>
+          {isLoggedIn ? (
+            <div></div>
+          ) : (
+            <>
+              <button className="header__register-btn" type="button" onClick={onRegisterClick}>
+                Sign Up
+              </button>
+              <button className="header__login-btn" type="button" onClick={onLoginClick}>
+                Log in
+              </button>
+            </>
+          )}
+
+          {isLoggedIn ? (
+            <div className="header__user-info">
+              <button className="header__add-clothes" type="button" onClick={handleAddClick}>
+                + Add clothes
+              </button>
+
+              <p className="header__username">{currentUser.name}</p>
+              <Link to={"/profile"}>
+                <img className="header__avatar" alt="avatar" src={currentUser.avatar} />
+              </Link>
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
       </div>
     </header>
