@@ -20,6 +20,7 @@ import { CurrentUserContext } from "../../context/CurrentUserContext";
 import { EditProfileModal } from "../EditProfileModal/EditProfileModal";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
 import { RegisterModal } from "../RegisterModal/RegisterModal";
+import { LoginModal } from "../LoginModal/LoginModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
@@ -30,6 +31,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
@@ -43,6 +45,7 @@ function App() {
 
   const handleRegisterClick = () => setIsRegisterModalOpen(true);
 
+  const handleLoginClick = () => setIsLoginModalOpen(true);
   const handleAddClick = () => setIsAddItemModalOpen(true);
 
   const handleChangeProfile = () => setIsProfileModalOpen(true);
@@ -53,6 +56,7 @@ function App() {
     setDeleteModalOpen(false);
     setIsProfileModalOpen(false);
     setIsRegisterModalOpen(false);
+    setIsLoginModalOpen(false);
   };
 
   const handleToggleSwitchChange = () => {
@@ -82,7 +86,7 @@ function App() {
         { isImagePreviewOpen, isAddItemModalOpen, setDeleteModalOpen } &&
         !e.target.closest(".modal__content")
       ) {
-       closeModal();
+        closeModal();
       }
     }
     document.addEventListener("mousedown", handleOverlayClose);
@@ -153,24 +157,25 @@ function App() {
       return setIsLoading(false);
     }
   }
-  // async function handleUserLogin(email, password) {
-  //   setIsLoading(true);
-  //   try {
-  //     const res = await auth.login(email, password);
-  //     if (res) {
-  //       setIsLoggedIn(true);
-  //       setCurrentUser({ user: res.token});
-  //       closeModal();
-  //     }
-  //   } catch (err) {
-  //     return console.err(err);
-  //   } finally {
-  //     return setIsLoading(false);
-  //   }
-  // }
+
+  async function handleUserLogin(email, password) {
+    setIsLoading(true);
+    try {
+      const res = await auth.login(email, password);
+      if (res) {
+        setIsLoggedIn(true);
+        setCurrentUser({ user: res.token });
+        closeModal();
+      }
+    } catch (err) {
+      return console.err(err);
+    } finally {
+      return setIsLoading(false);
+    }
+  }
 
   // useEffect(() => {
-    
+
   //   if (localStorage.getItem("token")) {
   //     const token = localStorage.getItem("token");
   //     console.log(token)
@@ -195,6 +200,7 @@ function App() {
               weatherData={weatherData}
               handleAddClick={handleAddClick}
               onRegisterClick={handleRegisterClick}
+              onLoginClick={handleLoginClick}
             />
             <Switch>
               <Route exact path={"/"}>
@@ -252,11 +258,21 @@ function App() {
           )}
           {isRegisterModalOpen && (
             <RegisterModal
+              name="next"
               form="register"
               isOpen={isRegisterModalOpen}
               isLoading={isLoading}
               onCloseModal={closeModal}
               onRegistration={handleRegistration}
+            />
+          )}
+          {isLoginModalOpen && (
+            <LoginModal
+              name="login"
+              isOpen={isLoginModalOpen}
+              isLoading={isLoading}
+              onCloseModal={closeModal}
+              onLogin={handleUserLogin}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
