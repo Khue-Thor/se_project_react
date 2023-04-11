@@ -95,6 +95,13 @@ function App() {
     }
   }
 
+  function handleLogOut(e) {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    history.push("/");
+  }
+
   const openDeleteModal = () => {
     setDeleteModalOpen(true);
   };
@@ -165,13 +172,6 @@ function App() {
         closeModal();
       })
       .catch((err) => console.error(err));
-  }
-
-  function handleLogOut(e) {
-    e.preventDefault();
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
-    history.push("/");
   }
 
   useEffect(() => {
@@ -253,6 +253,7 @@ function App() {
               currentUser={currentUser}
               isOpen={isProfileModalOpen}
               onCloseModal={closeModal}
+             
             />
           )}
           {isRegisterModalOpen && (

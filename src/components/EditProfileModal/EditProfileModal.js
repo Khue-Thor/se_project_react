@@ -11,6 +11,10 @@ export function EditProfileModal({ isOpen, isLoading, currentUser, onEditProfile
     setName(e.target.value);
   }
 
+  function handleAvatarChange(e) {
+    setAvatar(e.target.value);
+  }
+
   function handleSubmit(e) {
     onEditProfile(name, avatar);
     history.push("/profile");
@@ -33,7 +37,7 @@ export function EditProfileModal({ isOpen, isLoading, currentUser, onEditProfile
           placeholder="Name"
           minLength="1"
           maxLength="30"
-          onChange={handleNameChange}
+          onChange={handleAvatarChange}
           className="modal__form-input"
         />
         <span className="modal__input-error"></span>
