@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import logo from "../../logo.svg";
 import "./App.css";
 import { Header } from "../Header/Header";
@@ -16,6 +16,7 @@ import { location, API_KEY } from "../../utils/constants";
 import { defaultClothingItems } from "../../utils/clothingItems";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
+import { EditProfileModal } from "../EditProfileModal/EditProfileModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
@@ -25,9 +26,11 @@ function App() {
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const history = useHistory();
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
@@ -36,10 +39,13 @@ function App() {
 
   const handleAddClick = () => setIsAddItemModalOpen(true);
 
+  const handleChangeProfile = () => setIsProfileModalOpen(true);
+
   const closeModal = () => {
     setIsImagePreviewOpen(false);
     setIsAddItemModalOpen(false);
     setDeleteModalOpen(false);
+    setIsProfileModalOpen(false);
   };
 
   const handleToggleSwitchChange = () => {
@@ -72,6 +78,7 @@ function App() {
         setIsImagePreviewOpen(false);
         setIsAddItemModalOpen(false);
         setDeleteModalOpen(false);
+        setIsProfileModalOpen(false);
       }
     }
     document.addEventListener("mousedown", handleOverlayClose);
@@ -122,6 +129,13 @@ function App() {
       .catch((err) => console.error(err));
   }
 
+  function handleLogOut(e) {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    history.push("/");
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
@@ -129,7 +143,11 @@ function App() {
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
           <div className="App__content">
-            <Header isLoggedIn={isLoggedIn} weatherData={weatherData} handleAddClick={handleAddClick} />
+            <Header
+              isLoggedIn={isLoggedIn}
+              weatherData={weatherData}
+              handleAddClick={handleAddClick}
+            />
             <Switch>
               <Route exact path={"/"}>
                 <Main
@@ -141,8 +159,11 @@ function App() {
               <Route path={"/profile"}>
                 <Profile
                   cards={clothingitems}
+                  isLoggedIn={isLoggedIn}
                   handleAddClick={handleAddClick}
                   onCardClick={handleCardClick}
+                  onChangeProfile={handleChangeProfile}
+                  onLogOut={handleLogOut}
                 />
               </Route>
             </Switch>
@@ -171,6 +192,14 @@ function App() {
               onCloseModal={closeModal}
               onOpen={openDeleteModal}
               handleDelete={handleCardDeleteSubmit}
+            />
+          )}
+          {isProfileModalOpen && (
+            <EditProfileModal
+              name="edit"
+              currentUser={currentUser}
+              isOpen={isProfileModalOpen}
+              onCloseModal={closeModal}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
