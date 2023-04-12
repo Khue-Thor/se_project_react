@@ -1,19 +1,20 @@
 .modal__auth-text {
+  display: flex;
+  flex-direction: row;
   position: relative;
-  left: -108px;
-  top: -10px;
-  font-family: 'Cabinet Grotesk', sans-serif;
-  font-style: normal;
+  top: 30px;
+  left: 66px;
+  font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
   font-size: 16px;
-  line-height: 20px;
-  color: rgba(0, 0, 0, 0.5);
-  
+  color: rgba(0, 0, 0, 0.3);
+  margin: 0 0 0 12px;
+  gap: 3px;
 }
 
 .modal__form-link {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.5);
   padding: 0;
-  margin: 0 0 0 3px;
+  margin: 0 0 0 5px;
 }

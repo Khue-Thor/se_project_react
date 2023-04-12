@@ -7,6 +7,11 @@ export function EditProfileModal({ isOpen, isLoading, currentUser, onEditProfile
   const [avatar, setAvatar] = useState("");
   const history = useHistory();
 
+  useEffect(() => {
+    setName(currentUser.name);
+    setAvatar(currentUser.avatar);
+  }, [currentUser]);
+
   function handleNameChange(e) {
     setName(e.target.value);
   }
@@ -22,7 +27,7 @@ export function EditProfileModal({ isOpen, isLoading, currentUser, onEditProfile
   return (
     <ModalWithForm
       title="Change profile data"
-      buttonText={isLoading ? "Saving..." : "Save"}
+      buttonText={isLoading ? "Saving..." : "Save Change"}
       isOpen={isOpen}
       onSubmit={handleSubmit}
       closeModal={onCloseModal}

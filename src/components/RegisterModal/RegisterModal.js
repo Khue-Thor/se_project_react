@@ -43,7 +43,7 @@ export function RegisterModal({ form, isOpen, isLoading, onCloseModal, onRegistr
     <ModalWithForm
       name={form}
       title="Sign up"
-      buttonText={isLoading ? "Save..." : "Save"}
+      buttonText={isLoading ? "Save..." : "Next"}
       isOpen={isOpen}
       onSubmit={handleSubmit}
       closeModal={onCloseModal}
@@ -81,7 +81,7 @@ export function RegisterModal({ form, isOpen, isLoading, onCloseModal, onRegistr
           type="text"
           name="name"
           value={name}
-          placeholder="name"
+          placeholder="Name"
           onChange={handleName}
           minLength="1"
           maxLength="30"
