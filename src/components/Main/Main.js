@@ -33,7 +33,7 @@ export function Main({ isLoggedIn, weatherData, cards, onCardClick, onCardLike }
         </div>
         <ul className="main__items">
           {filteredCards.map((filteredCard) => (
-            <ItemCard isLoggedIn={isLoggedIn} key={filteredCard.id} card={filteredCard} onCardClick={onCardClick} onCardLike={onCardLike} />
+            <ItemCard isLoggedIn={isLoggedIn} key={filteredCard._id} card={filteredCard} onCardClick={onCardClick} onCardLike={onCardLike} />
           ))}
         </ul>
       </section>
