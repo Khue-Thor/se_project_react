@@ -79,6 +79,7 @@
 
 .header__user-info {
   display: flex;
+  align-items: center;
 }
 
 
