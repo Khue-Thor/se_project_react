@@ -1,13 +1,15 @@
 .modal__auth-text-login {
+  display: flex;
+  flex-direction: row;
   position: relative;
-  left: -88px;
-  top: -10px;
-  font-family: 'Cabinet Grotesk', sans-serif;
-  font-style: normal;
+  top: 30px;
+  left: 66px;
+  font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
   font-size: 16px;
-  line-height: 20px;
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.3);
+  margin: 0 0 0 12px;
+  gap: 3px;
   
 }
 

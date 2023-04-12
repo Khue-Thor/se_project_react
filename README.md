@@ -11,3 +11,4 @@ Technologies:
 React: https://react.dev/
 
 OpenWeatherAPI: https://openweathermap.org/city/5045360
+

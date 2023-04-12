@@ -2,8 +2,14 @@ import React from "react";
 import { ItemCard } from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 
-export function ClothesSection({ cards, isLoggedIn, handleAddClick, onCardClick }) {
-  
+export function ClothesSection({
+  cards,
+  isLoggedIn,
+  handleAddClick,
+  onCardClick,
+  handleLikeClick,
+}) {
+
   return (
     <section className="clothes__section">
       <div className="clothes__section-info">
@@ -12,11 +18,19 @@ export function ClothesSection({ cards, isLoggedIn, handleAddClick, onCardClick 
           + Add new
         </button>
       </div>
+      <div>
       <ul className="clothes__section-items">
         {cards.map((card) => (
-          <ItemCard isLoggedIn={isLoggedIn} key={card._id} card={card} onCardClick={onCardClick} />
+          <ItemCard
+            isLoggedIn={isLoggedIn}
+            key={card._id}
+            card={card}
+            onCardClick={onCardClick}
+            onCardLike={handleLikeClick}
+          />
         ))}
       </ul>
+      </div>
     </section>
   );
 }

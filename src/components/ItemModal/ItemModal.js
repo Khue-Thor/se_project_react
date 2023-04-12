@@ -18,7 +18,7 @@ export function ItemModal({ card, currentUser, onCloseModal, onDeleteModal}) {
               <p className="modal__preview-title">{card?.name}</p>
               <p className="modal__preview-description">Weather: {card?.weather}</p>
             </div>
-            <button className="modal__delete-button" onClick={onDeleteModal} type="button">
+            <button className={itemDeleteButtonClassName} onClick={onDeleteModal} type="button">
               Delete item
             </button>
           </div>

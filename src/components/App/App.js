@@ -151,7 +151,18 @@ function App() {
       .catch((error) => console.error(error));
   }, []);
 
-  function handleAddItemSubmit(name, imageUrl, weather) {
+  function handleEditProfile(name, avatar) {
+    setIsLoading(true);
+    auth.updateUser(name, avatar)
+      .then((user) => {
+        setCurrentUser(user);
+        closeModal();
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
+  }
+
+  async function handleAddItemSubmit(name, imageUrl, weather) {
     setIsLoading(true);
     api
       .addItem({ name, imageUrl, weather })
@@ -163,11 +174,31 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
+  function handleLikeClick(id, isLiked) {
+    isLiked
+      ? api
+          .addCardLike(id)
+          .then((updateCard) => {
+            setClothingItems((cards) => cards.map((card) => (card._id === id ? updateCard : card)));
+          })
+          .catch((err) => console.error(err))
+      : api
+          .removeCardLike(id)
+          .then((updateCard) => {
+            setClothingItems((cards) =>
+              cards.map((card) => {
+                return card._id === id ? updateCard : card;
+              })
+            );
+          })
+          .catch((err) => console.error(err));
+  }
+
   function handleCardDeleteSubmit() {
     api
-      .deleteItem(selectedCard.id)
+      .deleteItem(selectedCard._id)
       .then(() => {
-        setClothingItems([...clothingitems.filter((item) => item.id !== selectedCard.id)]);
+        setClothingItems([...clothingitems.filter((item) => item._id !== selectedCard._id)]);
         setSelectedCard({});
         closeModal();
       })
@@ -175,17 +206,17 @@ function App() {
   }
 
   useEffect(() => {
-
     if (localStorage.getItem("token")) {
       const token = localStorage.getItem("token");
       setIsLoggedIn(true);
-      auth.getUser(token)
-      .then((res) => {
-        setCurrentUser(res.data);
-      })
-      .catch((err) => console.error(err.message));
+      auth
+        .getUser(token)
+        .then((res) => {
+          setCurrentUser(res.data);
+        })
+        .catch((err) => console.error(err.message));
     }
-  }, [isLoggedIn])
+  }, [isLoggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -204,9 +235,11 @@ function App() {
             <Switch>
               <Route exact path={"/"}>
                 <Main
+                  isLoggedIn={isLoggedIn}
                   weatherData={weatherData}
                   cards={clothingitems}
                   onCardClick={handleCardClick}
+                  onCardLike={handleLikeClick}
                 />
               </Route>
               <ProtectedRoute path="/profile" loggedIn={isLoggedIn} currentUser={currentUser}>
@@ -217,6 +250,7 @@ function App() {
                   onCardClick={handleCardClick}
                   onChangeProfile={handleChangeProfile}
                   onLogOut={handleLogOut}
+                  handleLikeClick={handleLikeClick}
                 />
               </ProtectedRoute>
             </Switch>
@@ -253,7 +287,7 @@ function App() {
               currentUser={currentUser}
               isOpen={isProfileModalOpen}
               onCloseModal={closeModal}
-             
+              onEditProfile={handleEditProfile}
             />
           )}
           {isRegisterModalOpen && (

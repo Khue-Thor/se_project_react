@@ -26,6 +26,7 @@ export default class Api {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem('token')}`
       },
       body: JSON.stringify({
         name,
@@ -40,6 +41,7 @@ export default class Api {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
         id,
@@ -47,8 +49,28 @@ export default class Api {
     });
   };
 
+  addCardLike = async (id) => {
+    return await this._request(`${this._baseUrl}/items/${id}/likes`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`
+      },
+    });
+  }
+
+  removeCardLike = async (id) => {
+    return await this._request(`${this._baseUrl}/items/${id}/likes`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`
+      },
+    });
+  }
+
 }
 
 export const api = new Api({
-  baseUrl: "https://my-json-server.typicode.com/Khue-Thor/se_project_react",
+  baseUrl: "http://localhost:3001",
 })
