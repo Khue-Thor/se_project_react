@@ -134,13 +134,22 @@ function App() {
   });
 
   useEffect(() => {
-    Promise.all([weatherApi.getWeatherData(location, API_KEY), api.getItems()])
-      .then(([weatherInfo, clothing]) => {
-        setWeatherData(weatherInfo);
+    weatherApi
+      .getWeatherData(location, API_KEY)
+      .then((setweatherInfo) => {
+        setWeatherData(setweatherInfo);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  useEffect(() => {
+    api
+      .getItems()
+      .then((clothing) => {
         setClothingItems(clothing);
       })
-      .catch((err) => console.error(err))
-  })
+      .catch((error) => console.error(error));
+  }, []);
 
   function handleEditProfile(name, avatar) {
     setIsLoading(true);

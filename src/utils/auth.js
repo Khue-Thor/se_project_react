@@ -51,7 +51,7 @@ export const getUser = async (token) => {
 };
 
 export const updateUser = async (name, avatar) => {
-  return handleRequest(`${BASE__URL}/users/me`, {
+  return handleRequest(`${BASE__URL}/user/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
