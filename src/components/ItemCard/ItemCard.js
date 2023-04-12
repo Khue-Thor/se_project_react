@@ -7,7 +7,7 @@ export function ItemCard({ isLoggedIn, card, onCardClick, onCardLike }) {
 
   const currentUser = useContext(CurrentUserContext);
 
-  const isLiked = card.likes?.some((user) => user._id === currentUser._id);
+  const isLiked = card.likes?.some((user) => user === currentUser._id);
 
   const itemLikeButtonClassName = `card__like-btn ${
     isLiked ? "card__like-btn" : "card__liked"
