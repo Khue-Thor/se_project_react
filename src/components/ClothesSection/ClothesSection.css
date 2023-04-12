@@ -7,9 +7,8 @@
 
 .clothes__section-info {
   display: flex;
-  margin: 16px 0 0 40px;
+  margin: 16px 0 0 0;
   gap: 20px;
-  
 }
 
 .clothes__section-title {
@@ -40,4 +39,5 @@
   display: flex;
   flex-wrap: wrap;
   gap:15.98px;
+  padding: 0;
 }
