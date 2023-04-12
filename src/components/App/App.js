@@ -134,22 +134,24 @@ function App() {
   });
 
   useEffect(() => {
-    weatherApi
-      .getWeatherData(location, API_KEY)
-      .then((setweatherInfo) => {
-        setWeatherData(setweatherInfo);
-      })
-      .catch((error) => console.error(error));
-  }, []);
-
-  useEffect(() => {
-    api
-      .getItems()
-      .then((clothing) => {
+    Promise.all([weatherApi.getWeatherData(location, API_KEY), api.getItems()])
+      .then(([weatherInfo, clothing]) => {
+        setWeatherData(weatherInfo);
         setClothingItems(clothing);
       })
-      .catch((error) => console.error(error));
-  }, []);
+      .catch((err) => console.error(err))
+  })
+
+  function handleEditProfile(name, avatar) {
+    setIsLoading(true);
+    auth.updateUser(name, avatar)
+      .then((user) => {
+        setCurrentUser(user);
+        closeModal();
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
+  }
 
   function handleAddItemSubmit(name, imageUrl, weather) {
     setIsLoading(true);
@@ -276,6 +278,7 @@ function App() {
               currentUser={currentUser}
               isOpen={isProfileModalOpen}
               onCloseModal={closeModal}
+              onEditProfile={handleEditProfile}
             />
           )}
           {isRegisterModalOpen && (

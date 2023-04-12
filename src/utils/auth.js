@@ -51,8 +51,8 @@ export const getUser = async (token) => {
 };
 
 export const updateUser = async (name, avatar) => {
-  return handleRequest(`${BASE__URL}/user/me`, {
-    medthod: "PATCH",
+  return handleRequest(`${BASE__URL}/users/me`, {
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -64,3 +64,4 @@ export const updateUser = async (name, avatar) => {
     }
   });
 };
+
