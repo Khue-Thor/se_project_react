@@ -162,7 +162,7 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
-  function handleAddItemSubmit(name, imageUrl, weather) {
+  async function handleAddItemSubmit(name, imageUrl, weather) {
     setIsLoading(true);
     api
       .addItem({ name, imageUrl, weather })
@@ -196,9 +196,9 @@ function App() {
 
   function handleCardDeleteSubmit() {
     api
-      .deleteItem(selectedCard.id)
+      .deleteItem(selectedCard._id)
       .then(() => {
-        setClothingItems([...clothingitems.filter((item) => item.id !== selectedCard.id)]);
+        setClothingItems([...clothingitems.filter((item) => item._id !== selectedCard._id)]);
         setSelectedCard({});
         closeModal();
       })
