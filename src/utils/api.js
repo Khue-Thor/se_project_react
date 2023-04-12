@@ -54,8 +54,18 @@ export default class Api {
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${localStorage.getItem("token")}`
-      }
-    })
+      },
+    });
+  }
+
+  removeCardLike = async (id) => {
+    return await this._request(`${this._baseUrl}/items/${id}/likes`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`
+      },
+    });
   }
 
 }
