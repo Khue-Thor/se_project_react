@@ -23,7 +23,7 @@ export function ItemCard({ isLoggedIn, card, onCardClick, onCardLike }) {
           onCardLike(card._id, !isLiked)
          }}/>
        ) : (
-        <img src={like} alt="like" className="card__like-btn"/>
+        <img src={like} alt="like" className="card__like-btn_hidden"/>
        )}
       </div>
       <img className="card__image" src={card.imageUrl} alt={card.name} />
