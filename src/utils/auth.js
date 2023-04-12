@@ -16,9 +16,11 @@ export const register = async (name, avatar, email, password) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, avatar, email, password }),
-  }).then((res) => {
-    return res;
-  }).catch((err) => console.error(err));
+  })
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => console.error(err));
 };
 
 export const login = async (email, password) => {
@@ -33,7 +35,7 @@ export const login = async (email, password) => {
       localStorage.setItem("token", res.token);
       return res;
     }
-  })
+  });
 };
 
 export const getUser = async (token) => {
@@ -41,9 +43,24 @@ export const getUser = async (token) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${localStorage.getItem('token')}`,
-    }
+      authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
   }).then((data) => {
     return data;
   });
-}
+};
+
+export const updateUser = async (name, avatar) => {
+  return handleRequest(`${BASE__URL}/user/me`, {
+    medthod: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then((data) => {
+    if (data) {
+      return data;
+    }
+  });
+};
