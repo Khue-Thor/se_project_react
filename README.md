@@ -12,3 +12,4 @@ React: https://react.dev/
 
 OpenWeatherAPI: https://openweathermap.org/city/5045360
 
+link to the backend repo: https://github.com/Khue-Thor/se_project_express
