@@ -20,7 +20,6 @@ export const register = async (name, avatar, email, password) => {
     .then((res) => {
       return res;
     })
-    .catch((err) => console.error(err));
 };
 
 export const login = async (email, password) => {
