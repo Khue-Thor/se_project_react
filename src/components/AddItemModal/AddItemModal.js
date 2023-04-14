@@ -38,6 +38,7 @@ export const AddItemModal = ({ name, isOpen, isLoading, onAddItem, onCloseModal 
       buttonText={isLoading ? "Saving..." : "Add garment"}
       onSubmit={handleSubmit}
       closeModal={onCloseModal}
+      onAddItem={onAddItem}
     >
       <fieldset className="modal__form-fieldset">
         <label className="modal__form-label">Name</label>

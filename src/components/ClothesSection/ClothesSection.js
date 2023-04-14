@@ -18,7 +18,7 @@ export function ClothesSection({
         </button>
       </div>
       <div>
-      <ul className="clothes__section-items">
+        <ul className="clothes__section-items">
           {cards.map((card) => {
             return (
               <ItemCard
@@ -26,7 +26,7 @@ export function ClothesSection({
                 key={card._id}
                 card={card}
                 onCardClick={onCardClick}
-                onCardLike={handleLikeClick}
+                handleLikeClick={handleLikeClick}
               />
             );
           })}

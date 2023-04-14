@@ -3,8 +3,7 @@ import { WeatherCard } from "../WeatherCard/WeatherCard";
 import { ItemCard } from "../ItemCard/ItemCard";
 import "./Main.css";
 
-export function Main({ isLoggedIn, weatherData, cards, onCardClick, onCardLike }) {
-  
+export function Main({ isLoggedIn, weatherData, cards, onCardClick, handleLikeClick }) {
   const temperature = weatherData.main?.temp;
   const getWeatherType = () => {
     if (temperature >= 86) {
@@ -33,7 +32,13 @@ export function Main({ isLoggedIn, weatherData, cards, onCardClick, onCardLike }
         </div>
         <ul className="main__items">
           {filteredCards.map((filteredCard) => (
-            <ItemCard isLoggedIn={isLoggedIn} key={filteredCard._id} card={filteredCard} onCardClick={onCardClick} onCardLike={onCardLike} />
+            <ItemCard
+              isLoggedIn={isLoggedIn}
+              key={filteredCard._id}
+              card={filteredCard}
+              onCardClick={onCardClick}
+              handleLikeClick={handleLikeClick}
+            />
           ))}
         </ul>
       </section>

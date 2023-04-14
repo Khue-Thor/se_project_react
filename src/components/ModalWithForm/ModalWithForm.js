@@ -14,7 +14,7 @@ export function ModalWithForm({ title, name, buttonText, closeModal, onSubmit, c
           <h2 className="modal__form-title">{title}</h2>
           <button className="modal__close" type="button" onClick={closeModal} />
         </div>
-        <form className="modal__form" onSubmit={handleSubmit}>
+        <form className={`modal__form modal__form-${name}`} onSubmit={handleSubmit}>
           {children}
           <button type="submit" className="modal__form-save">
             {buttonText}

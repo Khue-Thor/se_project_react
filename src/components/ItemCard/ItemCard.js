@@ -3,7 +3,7 @@ import like from '../../images/like.svg';
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import "./ItemCard.css";
 
-export function ItemCard({ isLoggedIn, card, onCardClick, onCardLike }) {
+export function ItemCard({ isLoggedIn, card, onCardClick, handleLikeClick}) {
 
   const currentUser = useContext(CurrentUserContext);
 
@@ -20,7 +20,7 @@ export function ItemCard({ isLoggedIn, card, onCardClick, onCardLike }) {
        {isLoggedIn ? (
          <img src={like} alt="like" className={itemLikeButtonClassName} onClick={(e) => {
           e.stopPropagation();
-          onCardLike(card._id, !isLiked)
+          handleLikeClick(card._id, !isLiked)
          }}/>
        ) : (
         <img src={like} alt="like" className="card__like-btn_hidden"/>

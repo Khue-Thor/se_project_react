@@ -205,6 +205,15 @@ function App() {
       .catch((error) => console.error(error));
   }, []);
 
+  // useEffect(() => {
+  //   Promise.all([weatherApi.getWeatherData(location, API_KEY), api.getItems()])
+  //     .then(([weatherInfo, clothing]) => {
+  //       setWeatherData(weatherInfo);
+  //       setClothingItems(clothing);
+  //     })
+  //     .catch((error) => console.error(error));
+  // }, []);
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       const token = localStorage.getItem("token");
@@ -239,7 +248,7 @@ function App() {
                   weatherData={weatherData}
                   cards={clothingitems}
                   onCardClick={handleCardClick}
-                  onCardLike={handleLikeClick}
+                  handleLikeClick={handleLikeClick}
                 />
               </Route>
               <ProtectedRoute path="/profile" loggedIn={isLoggedIn} currentUser={currentUser}>
