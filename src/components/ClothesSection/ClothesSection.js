@@ -9,7 +9,6 @@ export function ClothesSection({
   onCardClick,
   handleLikeClick,
 }) {
-
   return (
     <section className="clothes__section">
       <div className="clothes__section-info">
@@ -20,16 +19,18 @@ export function ClothesSection({
       </div>
       <div>
       <ul className="clothes__section-items">
-        {cards.map((card) => (
-          <ItemCard
-            isLoggedIn={isLoggedIn}
-            key={card._id}
-            card={card}
-            onCardClick={onCardClick}
-            onCardLike={handleLikeClick}
-          />
-        ))}
-      </ul>
+          {cards.map((card) => {
+            return (
+              <ItemCard
+                isLoggedIn={isLoggedIn}
+                key={card._id}
+                card={card}
+                onCardClick={onCardClick}
+                handleLikeClick={handleLikeClick}
+              />
+            );
+          })}
+        </ul>
       </div>
     </section>
   );
