@@ -13,7 +13,6 @@ import { weatherApi } from "../../utils/weatherApi";
 import { api } from "../../utils/api";
 import * as auth from "../../utils/auth";
 import { location, API_KEY } from "../../utils/constants";
-import { defaultClothingItems } from "../../utils/clothingItems";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import { EditProfileModal } from "../EditProfileModal/EditProfileModal";
@@ -24,7 +23,7 @@ import { LoginModal } from "../LoginModal/LoginModal";
 function App() {
   const [weatherData, setWeatherData] = useState({});
   const [selectedCard, setSelectedCard] = useState(null);
-  const [clothingitems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingitems, setClothingItems] = useState([]);
   const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -133,24 +132,6 @@ function App() {
     };
   });
 
-  // useEffect(() => {
-  //   weatherApi
-  //     .getWeatherData(location, API_KEY)
-  //     .then((setweatherInfo) => {
-  //       setWeatherData(setweatherInfo);
-  //     })
-  //     .catch((error) => console.error(error));
-  // }, []);
-
-  useEffect(() => {
-    api
-      .getItems()
-      .then((clothing) => {
-        setClothingItems(clothing);
-      })
-      .catch((error) => console.error(error));
-  }, []);
-
   function handleEditProfile(name, avatar) {
     setIsLoading(true);
     auth
@@ -205,6 +186,24 @@ function App() {
       })
       .catch((err) => console.error(err));
   }
+  
+    // useEffect(() => {
+  //   weatherApi
+  //     .getWeatherData(location, API_KEY)
+  //     .then((setweatherInfo) => {
+  //       setWeatherData(setweatherInfo);
+  //     })
+  //     .catch((error) => console.error(error));
+  // }, []);
+
+  useEffect(() => {
+    api
+      .getItems()
+      .then((clothing) => {
+        setClothingItems(clothing);
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
