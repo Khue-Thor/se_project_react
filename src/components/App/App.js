@@ -187,14 +187,14 @@ function App() {
       .catch((err) => console.error(err));
   }
   
-    // useEffect(() => {
-  //   weatherApi
-  //     .getWeatherData(location, API_KEY)
-  //     .then((setweatherInfo) => {
-  //       setWeatherData(setweatherInfo);
-  //     })
-  //     .catch((error) => console.error(error));
-  // }, []);
+    useEffect(() => {
+    weatherApi
+      .getWeatherData(location, API_KEY)
+      .then((setweatherInfo) => {
+        setWeatherData(setweatherInfo);
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   useEffect(() => {
     api
