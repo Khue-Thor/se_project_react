@@ -258,40 +258,6 @@ function App() {
 
             <Footer />
           </div>
-          {isAddItemModalOpen && (
-            <AddItemModal
-              name="create"
-              isLoading={isLoading}
-              isOpen={isAddItemModalOpen}
-              onCloseModal={closeModal}
-              onAddItem={handleAddItemSubmit}
-            />
-          )}
-          {isImagePreviewOpen && (
-            <ItemModal
-              isLoggedIn={isLoggedIn}
-              card={selectedCard}
-              currentUser={currentUser}
-              onCloseModal={closeModal}
-              onDeleteModal={openDeleteModal}
-            />
-          )}
-          {deleteModalOpen && (
-            <DeleteConfirmationModal
-              onCloseModal={closeModal}
-              onOpen={openDeleteModal}
-              handleDelete={handleCardDeleteSubmit}
-            />
-          )}
-          {isProfileModalOpen && (
-            <EditProfileModal
-              name="edit"
-              currentUser={currentUser}
-              isOpen={isProfileModalOpen}
-              onCloseModal={closeModal}
-              onEditProfile={handleEditProfile}
-            />
-          )}
           {isRegisterModalOpen && (
             <RegisterModal
               name="next"
@@ -309,6 +275,40 @@ function App() {
               isLoading={isLoading}
               onCloseModal={closeModal}
               onLogin={handleUserLogin}
+            />
+          )}
+          {isAddItemModalOpen && (
+            <AddItemModal
+              name="create"
+              isLoading={isLoading}
+              isOpen={isAddItemModalOpen}
+              onCloseModal={closeModal}
+              onAddItem={handleAddItemSubmit}
+            />
+          )}
+          {isProfileModalOpen && (
+            <EditProfileModal
+              name="edit"
+              currentUser={currentUser}
+              isOpen={isProfileModalOpen}
+              onCloseModal={closeModal}
+              onEditProfile={handleEditProfile}
+            />
+          )}
+          {isImagePreviewOpen && (
+            <ItemModal
+              isLoggedIn={isLoggedIn}
+              card={selectedCard}
+              currentUser={currentUser}
+              onCloseModal={closeModal}
+              onDeleteModal={openDeleteModal}
+            />
+          )}
+          {deleteModalOpen && (
+            <DeleteConfirmationModal
+              onCloseModal={closeModal}
+              onOpen={openDeleteModal}
+              handleDelete={handleCardDeleteSubmit}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
