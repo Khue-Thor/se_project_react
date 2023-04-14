@@ -26,7 +26,7 @@ export function ClothesSection({
                 key={card._id}
                 card={card}
                 onCardClick={onCardClick}
-                handleLikeClick={handleLikeClick}
+                onCardLike={handleLikeClick}
               />
             );
           })}
