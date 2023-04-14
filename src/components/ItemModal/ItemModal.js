@@ -2,7 +2,7 @@ import React from "react";
 import "./ItemModal.css";
 
 export function ItemModal({ isLoggedIn, card, currentUser, onCloseModal, onDeleteModal }) {
-  const isOwn = card.owner._id === currentUser._id;
+  const isOwn = card.owner === currentUser._id;
 
   const itemDeleteButtonClassName = `modal__delete-button ${
     isOwn ? "modal__delete-button" : "modal__delete-button_hidden"
