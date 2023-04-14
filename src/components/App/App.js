@@ -137,7 +137,7 @@ function App() {
     auth
       .updateUser(name, avatar)
       .then((user) => {
-        setCurrentUser(user);
+        setCurrentUser(user.data);
         closeModal();
       })
       .catch((err) => console.error(err))
@@ -148,8 +148,8 @@ function App() {
     setIsLoading(true);
     api
       .addItem({ name, imageUrl, weather })
-      .then((item) => {
-        setClothingItems([item, ...clothingitems]);
+      .then((data) => {
+        setClothingItems([data.item, ...clothingitems]);
         closeModal();
       })
       .catch((err) => console.error(err))
