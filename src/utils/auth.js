@@ -37,7 +37,7 @@ export const login = async (email, password) => {
   });
 };
 
-export const getUser = async (token) => {
+export const getUser = () => {
   return handleRequest(`${BASE__URL}/user/me`, {
     method: "GET",
     headers: {

@@ -17,6 +17,7 @@ export default class Api {
     return await this._request(`${this._baseUrl}/items`, {
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
   };

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
-import logo from "../../logo.svg";
 import "./App.css";
 import { Header } from "../Header/Header";
 import { Main } from "../Main/Main";
@@ -38,17 +37,24 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const history = useHistory();
 
+  const handleRegisterClick = () => setIsRegisterModalOpen(true);
+
+  const handleLoginClick = () => setIsLoginModalOpen(true);
+
+  const handleAddClick = () => setIsAddItemModalOpen(true);
+
+  const handleChangeProfile = () => setIsProfileModalOpen(true);
+
   const handleCardClick = (card) => {
     setSelectedCard(card);
     setIsImagePreviewOpen(true);
   };
 
-  const handleRegisterClick = () => setIsRegisterModalOpen(true);
-
-  const handleLoginClick = () => setIsLoginModalOpen(true);
-  const handleAddClick = () => setIsAddItemModalOpen(true);
-
-  const handleChangeProfile = () => setIsProfileModalOpen(true);
+  const handleToggleSwitchChange = () => {
+    currentTemperatureUnit === "F"
+      ? setCurrentTemperatureUnit("C")
+      : setCurrentTemperatureUnit("F");
+  };
 
   const closeModal = () => {
     setIsImagePreviewOpen(false);
@@ -57,12 +63,6 @@ function App() {
     setIsProfileModalOpen(false);
     setIsRegisterModalOpen(false);
     setIsLoginModalOpen(false);
-  };
-
-  const handleToggleSwitchChange = () => {
-    currentTemperatureUnit === "F"
-      ? setCurrentTemperatureUnit("C")
-      : setCurrentTemperatureUnit("F");
   };
 
   async function handleRegistration({ name, avatar, email, password }) {
@@ -133,14 +133,14 @@ function App() {
     };
   });
 
-  useEffect(() => {
-    weatherApi
-      .getWeatherData(location, API_KEY)
-      .then((setweatherInfo) => {
-        setWeatherData(setweatherInfo);
-      })
-      .catch((error) => console.error(error));
-  }, []);
+  // useEffect(() => {
+  //   weatherApi
+  //     .getWeatherData(location, API_KEY)
+  //     .then((setweatherInfo) => {
+  //       setWeatherData(setweatherInfo);
+  //     })
+  //     .catch((error) => console.error(error));
+  // }, []);
 
   useEffect(() => {
     api
@@ -153,7 +153,8 @@ function App() {
 
   function handleEditProfile(name, avatar) {
     setIsLoading(true);
-    auth.updateUser(name, avatar)
+    auth
+      .updateUser(name, avatar)
       .then((user) => {
         setCurrentUser(user);
         closeModal();
