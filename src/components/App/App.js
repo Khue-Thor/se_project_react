@@ -193,23 +193,23 @@ function App() {
   //     .catch((error) => console.error(error));
   // }, []);
 
-  useEffect(() => {
-    api
-      .getItems()
-      .then((clothing) => {
-        setClothingItems(clothing);
-      })
-      .catch((error) => console.error(error));
-  }, []);
-
   // useEffect(() => {
-  //   Promise.all([weatherApi.getWeatherData(location, API_KEY), api.getItems()])
-  //     .then(([weatherInfo, clothing]) => {
-  //       setWeatherData(weatherInfo);
+  //   api
+  //     .getItems()
+  //     .then((clothing) => {
   //       setClothingItems(clothing);
   //     })
   //     .catch((error) => console.error(error));
   // }, []);
+
+  useEffect(() => {
+    Promise.all([weatherApi.getWeatherData(location, API_KEY), api.getItems()])
+      .then(([weatherInfo, clothing]) => {
+        setWeatherData(weatherInfo);
+        setClothingItems(clothing);
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
