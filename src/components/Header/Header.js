@@ -17,7 +17,7 @@ export function Header({ isLoggedIn, weatherData, handleAddClick, onLoginClick, 
       <div className="header__container">
         <div className="header__logo-container">
           <Link to={"/"}>
-            <img className="header__logo" src={logoPath} />
+            <img className="header__logo" src={logoPath} alt="logo"/>
           </Link>
           <p className="header__date-location">
             {currentDate}, {weatherData.name}

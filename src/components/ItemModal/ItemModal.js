@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./ItemModal.css";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
 
-export function ItemModal({ isLoggedIn, card, currentUser, onCloseModal, onDeleteModal }) {
+export function ItemModal({ isLoggedIn, card, onCloseModal, onDeleteModal }) {
+
+  const currentUser = useContext(CurrentUserContext);
+
   const isOwn = card.owner === currentUser._id;
 
   const itemDeleteButtonClassName = `modal__delete-button ${
@@ -20,14 +24,14 @@ export function ItemModal({ isLoggedIn, card, currentUser, onCloseModal, onDelet
             </div>
 
             {isLoggedIn ? (
-              <button className={itemDeleteButtonClassName} onClick={onDeleteModal} type="button">
+              <button
+                className={itemDeleteButtonClassName}
+                onClick={onDeleteModal}
+                type="button"
+              >
                 Delete item
               </button>
-            ) : (
-              <button className="modal__delete-button_hidden" type="button">
-                Delete item
-              </button>
-            )}
+            ) : null}
           </div>
         </div>
       </div>

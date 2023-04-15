@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
 import { useHistory } from "react-router-dom";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
 
-export function EditProfileModal({ isOpen, isLoading, currentUser, onEditProfile, onCloseModal }) {
+export function EditProfileModal({ isOpen, isLoading, onEditProfile, onCloseModal }) {
+
+  const currentUser = useContext(CurrentUserContext)
 
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
