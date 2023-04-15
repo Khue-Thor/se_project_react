@@ -118,10 +118,7 @@ function App() {
 
   useEffect(() => {
     function handleOverlayClose(e) {
-      if (
-        { isImagePreviewOpen, isAddItemModalOpen, setDeleteModalOpen } &&
-        !e.target.closest(".modal__content")
-      ) {
+      if (!e.target.closest(".modal__content")) {
         closeModal();
       }
     }
@@ -130,7 +127,7 @@ function App() {
     return () => {
       document.removeEventListener("mousedown", handleOverlayClose);
     };
-  });
+  }, []);
 
   function handleEditProfile(name, avatar) {
     setIsLoading(true);
@@ -186,8 +183,8 @@ function App() {
       })
       .catch((err) => console.error(err));
   }
-  
-    useEffect(() => {
+
+  useEffect(() => {
     weatherApi
       .getWeatherData(location, API_KEY)
       .then((setweatherInfo) => {
@@ -215,8 +212,8 @@ function App() {
   // }, []);
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
+    if (token) {
       setIsLoggedIn(true);
       auth
         .getUser(token)
