@@ -1,4 +1,7 @@
-export const BASE__URL = "http://localhost:3001";
+export const BASE__URL =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr-k.chickenkiller.com/"
+    : "http://localhost:3001";
 
 async function handleRequest(url, options) {
   const response = await fetch(url, options);
@@ -16,10 +19,9 @@ export const register = async (name, avatar, email, password) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, avatar, email, password }),
-  })
-    .then((res) => {
-      return res;
-    })
+  }).then((res) => {
+    return res;
+  });
 };
 
 export const login = async (email, password) => {
@@ -63,4 +65,3 @@ export const updateUser = async (name, avatar) => {
     }
   });
 };
-

@@ -27,7 +27,7 @@ export default class Api {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("token")}`
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
         name,
@@ -55,23 +55,25 @@ export default class Api {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("token")}`
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-  }
+  };
 
   removeCardLike = async (id) => {
     return await this._request(`${this._baseUrl}/items/${id}/likes`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("token")}`
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-  }
-
+  };
 }
 
 export const api = new Api({
-  baseUrl: "http://localhost:3001",
-})
+  baseUrl:
+    process.env.NODE_ENV === "production"
+      ? "https://api.wtwr-k.chickenkiller.com/"
+      : "http://localhost:3001",
+});
