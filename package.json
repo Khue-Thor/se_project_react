@@ -17,8 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "npm run build && scp -r ./build/* khuephumy19@35.202.193.37:/home/khuephumy19/frontend"
   },
   "eslintConfig": {
     "extends": [
