@@ -39,7 +39,6 @@
   },
   "homepage": "https://wtwr-k.chickenkiller.com",
   "devDependencies": {
-    "gh-pages": "^5.0.0",
     "jest": "^27.5.1"
   }
 }
