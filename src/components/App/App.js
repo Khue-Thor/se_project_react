@@ -225,6 +225,7 @@ function App() {
         .catch((err) => console.error(err.message));
     }
   }, [isLoggedIn]);
+  
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
