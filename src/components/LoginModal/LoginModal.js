@@ -3,7 +3,7 @@ import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
 import { Link, useHistory } from "react-router-dom";
 import "./LoginModal.css";
 
-export function LoginModal({ name, isOpen, isLoading, onCloseModal, onLogin, onToggleModal }) {
+export function LoginModal({ name, isOpen, isLoading, onCloseModal, onLogin}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();

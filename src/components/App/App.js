@@ -69,7 +69,7 @@ function App() {
     try {
       const res = await auth.register(name, avatar, email, password);
       setIsLoggedIn(true);
-      setCurrentUser({ res });
+      setCurrentUser(res);
       closeModal();
     } catch (err) {
       return console.error(err);
@@ -82,9 +82,10 @@ function App() {
     setIsLoading(true);
     try {
       const res = await auth.login(email, password);
+
       if (res) {
         setIsLoggedIn(true);
-        setCurrentUser({ user: res.token });
+        setCurrentUser(res.token);
         closeModal();
       }
     } catch (err) {
@@ -98,6 +99,7 @@ function App() {
     e.preventDefault();
     localStorage.removeItem("token");
     setIsLoggedIn(false);
+    setCurrentUser({});
     history.push("/");
   }
 
@@ -193,23 +195,23 @@ function App() {
   //     .catch((error) => console.error(error));
   // }, []);
 
-  // useEffect(() => {
-  //   api
-  //     .getItems()
-  //     .then((clothing) => {
-  //       setClothingItems(clothing);
-  //     })
-  //     .catch((error) => console.error(error));
-  // }, []);
-
   useEffect(() => {
-    Promise.all([weatherApi.getWeatherData(location, API_KEY), api.getItems()])
-      .then(([weatherInfo, clothing]) => {
-        setWeatherData(weatherInfo);
+    api
+      .getItems()
+      .then((clothing) => {
         setClothingItems(clothing);
       })
       .catch((error) => console.error(error));
   }, []);
+
+  // useEffect(() => {
+  //   Promise.all([weatherApi.getWeatherData(location, API_KEY), api.getItems()])
+  //     .then(([weatherInfo, clothing]) => {
+  //       setWeatherData(weatherInfo);
+  //       setClothingItems(clothing);
+  //     })
+  //     .catch((error) => console.error(error));
+  // }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("token");

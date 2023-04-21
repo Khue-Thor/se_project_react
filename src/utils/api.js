@@ -74,6 +74,6 @@ export default class Api {
 export const api = new Api({
   baseUrl:
     process.env.NODE_ENV === "production"
-      ? "https://api.wtwr-k.chickenkiller.com/"
+      ? "https://api.wtwr-k.chickenkiller.com"
       : "http://localhost:3001",
 });

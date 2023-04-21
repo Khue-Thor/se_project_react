@@ -1,9 +1,8 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import "./SideBar.css";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 
 export function SideBar({ onChangeProfile, onLogOut }) {
-
   const currentUser = useContext(CurrentUserContext);
 
   return (
@@ -23,4 +22,3 @@ export function SideBar({ onChangeProfile, onLogOut }) {
     </div>
   );
 }
-   

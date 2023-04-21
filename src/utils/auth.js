@@ -1,7 +1,8 @@
 export const BASE__URL =
   process.env.NODE_ENV === "production"
-    ? "https://api.wtwr-k.chickenkiller.com/"
+    ? "https://api.wtwr-k.chickenkiller.com"
     : "http://localhost:3001";
+
 
 async function handleRequest(url, options) {
   const response = await fetch(url, options);
