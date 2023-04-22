@@ -43,7 +43,7 @@ export function RegisterModal({ form, isOpen, isLoading, onCloseModal, onRegistr
     <ModalWithForm
       name={form}
       title="Sign up"
-      buttonText={isLoading ? "Save..." : "Next"}
+      buttonText={isLoading ? "Saving..." : "Next"}
       isOpen={isOpen}
       onSubmit={handleSubmit}
       closeModal={onCloseModal}
@@ -71,6 +71,7 @@ export function RegisterModal({ form, isOpen, isLoading, onCloseModal, onRegistr
           value={password}
           placeholder="Password"
           onChange={handlePassword}
+          minLength="8"
           required
           className="modal__form-input"
         />

@@ -3,7 +3,6 @@ export const BASE__URL =
     ? "https://api.wtwr-k.chickenkiller.com"
     : "http://localhost:3001";
 
-
 async function handleRequest(url, options) {
   const response = await fetch(url, options);
   return handleResponse(response);
