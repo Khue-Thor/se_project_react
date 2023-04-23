@@ -20,6 +20,6 @@ export default class Api {
 }
 
 export const weatherApi = new Api({
-  baseUrl: `http://api.openweathermap.org/data/2.5/weather?`,
+  baseUrl: `https://api.openweathermap.org/data/2.5/weather?`,
   apiKey: "66d79d686e2c2216a220c2059ac437b7",
 });
