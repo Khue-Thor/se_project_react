@@ -2,12 +2,14 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  
 }
 
 .sidebar__container {
   display: flex;
   gap: 16px;
   align-items: center;
+  max-width: 229px;
 }
 
 .sidebar__avatar {
@@ -18,14 +20,14 @@
 }
 
 .sidebar__username {
-  font-family: 'Cabinet Grotesk';
+  font-family: 'Cabinet Grotesk', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
   line-height: 25px;
   color: #000;
   margin: 0;
-  
+  overflow: hidden;
 }
 
 .sidebar__buttons-container {
